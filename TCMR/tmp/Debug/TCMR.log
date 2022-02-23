@@ -1,0 +1,555 @@
+﻿  Bloque.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(25,47): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(25,35): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(25,23): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(26,21): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(43,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(44,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(45,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(46,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(49,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(50,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(51,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(57,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(58,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(59,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(60,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(63,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(64,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(65,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(71,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(72,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(73,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(74,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(77,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(78,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(79,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(85,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(86,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(87,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(88,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(91,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(92,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(93,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(103,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(115,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(119,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(122,27): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(127,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(141,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(146,27): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(147,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(148,27): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(149,26): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(153,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(156,43): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(157,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(157,24): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(160,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(161,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(162,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(163,26): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(165,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(170,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(171,27): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(172,26): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(173,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(175,4): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(175,45): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(177,41): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(178,40): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(178,31): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(182,26): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(183,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(184,27): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(185,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(188,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(198,22): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(199,27): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(201,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(202,23): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(205,26): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(207,27): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(209,26): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(211,27): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(263,36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(264,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(265,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(266,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(269,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(270,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(271,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(272,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(275,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(276,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(279,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(280,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(283,36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(284,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(287,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(288,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(293,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(294,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(297,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(298,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(301,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(302,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(305,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(306,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(316,4): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(316,41): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(317,5): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(317,44): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(318,31): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(318,20): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(327,4): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(327,43): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(328,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(328,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(336,4): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(336,43): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(337,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(337,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(360,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(361,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(364,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(365,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(368,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(369,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(372,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(373,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(378,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(379,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(380,3): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(380,42): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(381,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(381,46): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(381,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(385,32): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(386,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(387,3): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(387,42): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(388,38): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(388,45): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(388,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(394,3): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(394,42): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(395,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(395,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(395,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(399,3): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(399,42): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(400,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(400,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(400,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(405,3): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(405,42): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(406,40): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(406,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(406,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(410,3): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(410,42): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(411,40): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(411,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(411,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(496,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(497,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(500,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(501,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(515,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(516,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(517,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(518,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(522,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(523,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(528,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(529,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(534,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(535,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(540,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(541,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(547,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(548,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(549,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(550,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(553,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(554,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(555,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(556,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(559,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(560,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(561,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(562,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(565,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(566,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(567,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(568,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(571,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(572,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(573,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(574,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(577,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(578,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(579,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(580,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(588,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(589,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(590,36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(591,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(592,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(593,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(594,36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(595,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(598,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(599,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(600,36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(601,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(602,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(603,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(604,36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(605,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(608,36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(609,36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(610,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(611,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(612,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(613,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(614,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(615,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(620,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(621,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(622,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(623,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(624,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(625,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(626,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(627,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(630,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(631,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(632,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(633,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(634,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(635,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(636,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(637,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(640,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(641,35): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(642,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(643,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(644,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(645,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(646,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(647,34): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(653,43): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(654,61): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(654,34): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(654,19): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(689,23): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(689,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(694,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(695,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(696,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(697,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(706,26): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(706,20): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(711,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(712,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(713,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(714,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(740,23): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(740,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(745,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(746,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(747,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(748,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(757,26): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(757,20): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(762,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(763,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(764,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(765,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(781,22): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(782,41): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(782,28): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bloque.cpp(782,15): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+  Bonus.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Bonus.cpp(7,13): warning C4305: '=': truncamiento de 'double' a 'float'
+  Caja.cpp
+  Coordinador.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.h(7): message : vea la definición anterior de 'PI'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.h(8,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5): message : vea la definición anterior de 'PI'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Coordinador.cpp(187,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Coordinador.cpp(211,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Esfera.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Esfera.cpp(16,22): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Esfera.cpp(44,63): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  GameInterface.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.h(7): message : vea la definición anterior de 'PI'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.h(8,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5): message : vea la definición anterior de 'PI'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(10,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(14,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(15,15): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(18,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(19,16): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(22,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(23,16): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(47,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(57,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(67,40): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(238,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  Interaccion.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interaccion.cpp(87,49): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interaccion.cpp(288,38): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interaccion.cpp(289,35): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interaccion.cpp(290,30): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interaccion.cpp(306,28): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interaccion.cpp(335,18): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interaccion.cpp(462,24): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interaccion.cpp(480,8): warning C4101: 'norma': variable local sin referencia
+  Interfaz.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.cpp(11,13): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.cpp(431,15): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.cpp(434,15): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.cpp(438,35): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.cpp(419,28): warning C4101: 'y_del': variable local sin referencia
+  ListaBloques.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  ListaBonus.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  Menu.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.h(7): message : vea la definición anterior de 'PI'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(35,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(104,12): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(111,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(113,26): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(167,3): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(174,51): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(178,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(179,3): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(150,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(211,64): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(213,65): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(215,61): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(216,69): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(240,63): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(247,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(248,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(253,64): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(256,48): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(263,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(264,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(265,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(266,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(269,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(272,49): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(279,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(280,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(281,46): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(282,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(285,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(288,49): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(295,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(296,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(297,46): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(298,46): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(301,63): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(304,47): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(311,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(314,46): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(317,65): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(320,49): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(327,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(328,49): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(329,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(333,63): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(336,47): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(343,49): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(344,49): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(345,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(346,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(349,65): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(352,48): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(359,49): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(360,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(361,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(362,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(365,65): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(368,48): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(375,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(376,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(377,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(378,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(381,62): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(384,46): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(391,48): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(392,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(394,47): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(255,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(271,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(287,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(303,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(319,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(335,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(351,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(367,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(383,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(432,31): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(438,56): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(440,54): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(442,54): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(443,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(444,53): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(445,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(446,53): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(456,80): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(457,75): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(462,85): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(469,79): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(470,72): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(475,83): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(482,79): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(483,73): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(488,83): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(496,79): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(497,72): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(502,83): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(510,79): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(511,72): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(516,83): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(523,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(525,26): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(551,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(426,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(580,68): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(581,76): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(581,88): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(583,90): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(585,77): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(586,94): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(587,84): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(588,81): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(589,78): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(590,87): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(591,73): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(592,78): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(592,90): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(629,64): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(631,65): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(633,62): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(635,61): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(636,65): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(642,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(644,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(653,12): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(656,12): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(659,11): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(662,12): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(665,14): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(673,15): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(743,9): warning C4244: 'return': conversión de 'int' a 'float'; posible pérdida de datos
+  Mundo.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.h(7): message : vea la definición anterior de 'PI'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.h(8,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5): message : vea la definición anterior de 'PI'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(137,42): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(137,32): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(137,22): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(139,38): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(139,27): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(139,16): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(278,12): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(365,37): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(366,32): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(668,107): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(668,76): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(668,43): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Mundo.cpp(739,12): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+  Pared.cpp
+  Pelota.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Pelota.cpp(26,32): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Pelota.cpp(26,25): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Pelota.cpp(26,18): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Pelota.cpp(28,31): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Pelota.cpp(28,23): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Pelota.cpp(28,15): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  Simbolos.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(33,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(34,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(35,23): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(40,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(41,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(42,23): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(43,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(52,21): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(53,21): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(55,30): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(65,19): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(67,23): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(68,56): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(68,34): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(68,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(70,56): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(70,34): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(70,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(72,74): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(72,43): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(72,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(74,74): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(74,43): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(74,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(83,30): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(86,24): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(87,56): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(87,34): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(87,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(89,66): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(89,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(89,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(91,74): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(91,43): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(91,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(93,74): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(93,43): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.cpp(93,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  TCMR.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(31,36): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector3D.h(44,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Interfaz.h(7): message : vea la definición anterior de 'PI'
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.h(8,1): warning C4005: 'PI': redefinición de macro
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Simbolos.h(5): message : vea la definición anterior de 'PI'
+  Vector2D.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Vector2D.cpp(43,49): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+  Generando código...
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(696): warning C4715: 'Menu::monedas_minimo': no todas las rutas de acceso de control devuelven un valor
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(711): warning C4715: 'Menu::get_color': no todas las rutas de acceso de control devuelven un valor
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\Menu.cpp(756): warning C4715: 'Menu::get_compras': no todas las rutas de acceso de control devuelven un valor
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\ListaBloques.cpp(52): warning C4715: 'ListaBloques::inicio': no todas las rutas de acceso de control devuelven un valor
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\ListaBloques.cpp(47): warning C4715: 'ListaBloques::pos_lista': no todas las rutas de acceso de control devuelven un valor
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\ListaBloques.cpp(57): warning C4715: 'ListaBloques::meta': no todas las rutas de acceso de control devuelven un valor
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\src\GameInterface.cpp(42): warning C4715: 'GameInterface::calculo_vision_alpha': no todas las rutas de acceso de control devuelven un valor
+  TCMR.vcxproj -> C:\Users\mateo\Documents\Visual Studio 2022\Projects\TCMR\bin\TCMR.exe
