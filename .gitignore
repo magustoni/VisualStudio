@@ -1,5 +1,5 @@
-﻿################################################################################
-# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
-################################################################################
-
 /Kinect/packages
+/Kinect/.vs
+/Kinect/x64
+/Nuitrack/.vs
+/Nuitrack/x64
