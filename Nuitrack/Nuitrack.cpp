@@ -3,10 +3,74 @@
 #include <iomanip>
 #include <iostream>
 
+#define PRINT false 
+//false -> Solo numero articulaciones captadas
+//true -> Numero y posiciones de cada una
 using namespace tdv::nuitrack;
-FILE* fichero = fopen("C:/Users/mateo/Desktop/Nuitrack.txt", "w");
+using namespace std;
 
-const char* name(JointType joint) {
+//Variables globales
+FILE* fichero;
+SkeletonTracker::Ptr skeletonTracker;
+
+//Conjunto de articulaciones de interes
+const vector<JointType> desired_joints = { JOINT_HEAD, JOINT_NECK, JOINT_LEFT_COLLAR, JOINT_RIGHT_COLLAR, JOINT_TORSO, JOINT_WAIST, JOINT_LEFT_SHOULDER,
+JOINT_LEFT_ELBOW, JOINT_LEFT_WRIST, JOINT_RIGHT_SHOULDER, JOINT_RIGHT_ELBOW,  JOINT_RIGHT_WRIST, JOINT_LEFT_HIP,
+JOINT_LEFT_KNEE, JOINT_LEFT_ANKLE, JOINT_LEFT_FOOT, JOINT_RIGHT_HIP, JOINT_RIGHT_KNEE, JOINT_RIGHT_ANKLE, JOINT_RIGHT_FOOT };
+
+//Funciones
+const char* name(JointType joint); //Devuelve el nombre de la articulacion segun su tipo
+void onSkeletonUpdate(SkeletonData::Ptr skeletonData); //Callback para actualizacion de datos
+bool belongs(int index, const vector<JointType> v); //Devuelve si la articulacion pertenece al conjunto de deseadas
+void init(); //Inicializacion de lo relacionado con la camara
+
+int main(int argc, char* argv[])
+{
+	cout << "Configurando camara..." << endl;
+	try { init(); }
+	catch (const exception& e)
+	{
+		cerr << "Failed with exception:" << endl
+			<< "    " << e.what() << endl;
+		return 1;
+	}
+
+	//Bucle de captura
+	for (int frame = 0; frame < 200; frame++)
+	{
+		cout << "Procesando frame " << frame + 1 << endl;
+		fprintf(fichero, "Frame %d\n", frame + 1);
+		//Esperar datos
+		try { Nuitrack::waitUpdate(skeletonTracker); }
+		catch (LicenseNotAcquiredException& e)
+		{
+			cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << endl;
+			return 1;
+		}
+		catch (const Exception& e)
+		{
+			cerr << "Nuitrack update failed (ExceptionType: " << e.type() << ")" << endl;
+			return 1;
+		}
+	}
+
+	//Liberar Nuitrack
+	try { Nuitrack::release(); }
+	catch (const Exception& e)
+	{
+		cerr << "Nuitrack release failed (ExceptionType: " << e.type() << ")" << endl;
+		return 1;
+	}
+
+	cout << "Fin del programa Nuitrack" << endl;
+	fclose(fichero);
+	system("Nuitrack.txt");
+
+	return 0;
+}
+
+const char* name(JointType joint)
+{
 	switch (joint) {
 	case JOINT_HEAD: return "Cabeza\t\t";
 	case JOINT_LEFT_ANKLE: return "Tobillo Izq\t";
@@ -20,7 +84,7 @@ const char* name(JointType joint) {
 	case JOINT_LEFT_SHOULDER: return "Hombro Izq\t";
 	case JOINT_LEFT_WRIST: return "Muñeca Izq\t";
 	case JOINT_NECK: return "Cuello\t\t";
-	case JOINT_TORSO: return "Torso\t\t";
+	case JOINT_TORSO: return "Esternon\t";
 	case JOINT_WAIST: return "Cintura\t\t";
 	case JOINT_RIGHT_ANKLE: return "Tobillo Der\t";
 	case JOINT_RIGHT_COLLAR: return "Clavicula Der\t";
@@ -35,43 +99,11 @@ const char* name(JointType joint) {
 	default: return "NONE\t\t";
 	}
 }
-
-// Callback for the hand data update event
-void onHandUpdate(HandTrackerData::Ptr handData)
-{
-	if (!handData)
-	{
-		// No hand data
-		std::cout << "No hand data" << std::endl;
-		return;
-	}
-
-	auto userHands = handData->getUsersHands();
-	if (userHands.empty())
-	{
-		// No user hands
-		return;
-	}
-
-	auto rightHand = userHands[0].rightHand;
-	if (!rightHand)
-	{
-		// No right hand
-		std::cout << "Right hand of the first user is not found" << std::endl;
-		return;
-	}
-
-	std::cout << std::fixed << std::setprecision(3);
-	std::cout << "Right hand position: "
-		"x = " << rightHand->xReal << ", "
-		"y = " << rightHand->yReal << ", "
-		"z = " << rightHand->zReal << std::endl;
-}
 void onSkeletonUpdate(SkeletonData::Ptr skeletonData)
 {
 	//No se recibio correctamente el puntero
 	if (!skeletonData) {
-		std::cout << "No skeleton data" << std::endl;
+		cout << "\t\t--------No se detectaron sujetos-------\n" << endl;
 		return;
 	}
 
@@ -80,90 +112,55 @@ void onSkeletonUpdate(SkeletonData::Ptr skeletonData)
 	//No hay esqueletos
 	if (userSkeletons.empty())
 	{
-		fprintf(fichero, ", \t\t\t\t--------No se detectaron sujetos-------\n");
+		fprintf(fichero, "\t\t--------No se detectaron sujetos-------\n");
 		return;
 	}
 
 	//Articulaciones
+	int caught = 0;
 	auto joints = userSkeletons[0].joints;
-	std::cout << joints[0].real.x << std::endl;
-	fprintf(fichero, "\n");
 
 	for (int i = 0; i < joints.size(); i++)
 	{
-		if (joints[i].type != JOINT_NONE)
-			fprintf(fichero, "\t%s: Posicion[mm] ( %d, %d, %d )\n",
-				name(joints[i].type), (int)joints[i].real.x, (int)joints[i].real.y, (int)joints[i].real.z);
+		if (joints[i].confidence >= 0.5) //El nivel de confianza indica si la articulacion ha sido detectada
+		{
+			if (PRINT) //PRINT sirve para elegir si imprimir las posiciones o no
+				fprintf(fichero, "\t\t%s: Posicion[mm] ( %d, %d, %d ) \t", name(joints[i].type), (int)joints[i].real.x, (int)joints[i].real.y, (int)joints[i].real.z);
+			if (belongs(i, desired_joints))
+				caught++;
+		}
+		else if (PRINT && joints[i].type != JOINT_NONE) fprintf(fichero, "\t\t%s: No detectada \t\t\t\t", name(joints[i].type));
+
+		if (PRINT)
+		{
+			if (belongs(i, desired_joints))
+				fprintf(fichero, "<Deseada>\n");
+			else
+				fprintf(fichero, "\n");
+		}
 	}
-	fprintf(fichero, "\n");
-}
 
-bool finished;
-void signalHandler(int signal)
-{
-	if (signal == SIGINT)
-		finished = true;
+	fprintf(fichero, "Captadas %d/20 articulaciones de interes\n\n", caught);
 }
-
-int main(int argc, char* argv[])
+bool belongs(int index, const vector<JointType> v) {
+	for (int i = 0; i < v.size(); i++)
+		if (index == v[i]) return true;
+	return false;
+}
+void init()
 {
-	signal(SIGINT, &signalHandler);
-	std::string configPath = "";
-	if (argc > 1)
-		configPath = argv[1];
+	//Apertura del fichero de salida
+	fichero = fopen("Nuitrack.txt", "w");
 
 	//Configuracion Nuitrack
-	std::cout << "Configurando camara" << std::endl;
-	try { Nuitrack::init(configPath); }
-	catch (const Exception& e) {
-		std::cerr << "Can not initialize Nuitrack (ExceptionType: " << e.type() << ")" << std::endl;
-		return EXIT_FAILURE;
-	}
+	Nuitrack::init();
 
 	//Creacion del modulo de seguimiento
-	//auto handTracker = HandTracker::create();
-	auto skeletonTracker = SkeletonTracker::create();
+	skeletonTracker = SkeletonTracker::create();
 
 	//Enlazar la callback para recibir los datos
-	//handTracker->connectOnUpdate(onHandUpdate);
 	skeletonTracker->connectOnUpdate(onSkeletonUpdate);
 
 	//Iniciar Nuitrack
-	try { Nuitrack::run(); }
-	catch (const Exception& e)
-	{
-		std::cerr << "Can not start Nuitrack (ExceptionType: " << e.type() << ")" << std::endl;
-		return EXIT_FAILURE;
-	}
-
-	int errorCode = EXIT_SUCCESS;
-	//Bucle de captura
-	for (int frame = 0; frame < 500; frame++)
-	{
-		std::cout << "Procesando frame " << frame + 1 << std::endl;
-		fprintf(fichero, "Frame %d", frame + 1);
-		//Esperar datos
-		try { Nuitrack::waitUpdate(skeletonTracker); }
-		catch (LicenseNotAcquiredException& e)
-		{
-			std::cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << std::endl;
-			errorCode = EXIT_FAILURE;
-			break;
-		}
-		catch (const Exception& e)
-		{
-			std::cerr << "Nuitrack update failed (ExceptionType: " << e.type() << ")" << std::endl;
-			errorCode = EXIT_FAILURE;
-		}
-	}
-
-	//Liberar Nuitrack
-	try { Nuitrack::release(); }
-	catch (const Exception& e)
-	{
-		std::cerr << "Nuitrack release failed (ExceptionType: " << e.type() << ")" << std::endl;
-		errorCode = EXIT_FAILURE;
-	}
-	std::cout << "Fin del programa Nuitrack" << std::endl;
-	return errorCode;
+	Nuitrack::run();
 }

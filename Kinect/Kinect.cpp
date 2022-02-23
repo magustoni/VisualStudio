@@ -21,10 +21,10 @@ FILE* fichero; //Fichero de salida
 const vector<int> desired_joints = { 1,2,3,4,5,6,7,11,12,13,14,18,19,20,21,22,23,24,25,26 };
 
 //Funciones
-const char* name(int i); // Devuelve el nombre de la articulacion segun su numero
-bool belongs(int index, const vector<int> v); // Devuelve si la articulacion pertenece al conjunto de deseadas
-int print_body_information(k4abt_body_t body); // Gestiona lal informacion de las capturas
-void init(); // Inicializacion de lo relacionado con la camara
+const char* name(int i); //Devuelve el nombre de la articulacion segun su numero
+bool belongs(int index, const vector<int> v); //Devuelve si la articulacion pertenece al conjunto de deseadas
+int print_body_information(k4abt_body_t body); //Gestiona lal informacion de las capturas
+void init(); //Inicializacion de lo relacionado con la camara
 
 
 int main()
