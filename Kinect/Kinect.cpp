@@ -29,7 +29,7 @@ void init(); // Inicializacion de lo relacionado con la camara
 
 int main()
 {
-	cout << "Configurando camara" << endl;
+	cout << "Configurando camara..." << endl;
 	try { init(); }
 	catch (const exception& e)
 	{
@@ -64,7 +64,7 @@ int main()
 	cout << "Fin del programa Kinect" << endl;
 
 	fclose(fichero);
-	system("C:/Users/mateo/Desktop/Kinect.txt");
+	system("Kinect.txt");
 
 	return 0;
 }
@@ -137,7 +137,7 @@ int print_body_information(k4abt_body_t body)
 	}
 	return caught;
 }
-void init() {
+void init()  {
 	//Configuración de la cámara
 	k4a_device_configuration_t device_config = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;
 	device_config.depth_mode = K4A_DEPTH_MODE_NFOV_2X2BINNED;
@@ -149,5 +149,5 @@ void init() {
 	tracker = k4abt::tracker::create(sensor_calibration);
 
 	//Apertura del fichero de salida
-	fichero = fopen("C:/Users/mateo/Desktop/Kinect.txt", "w");
+	fichero = fopen("Kinect.txt", "w");
 }
