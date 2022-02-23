@@ -1,9 +1,11 @@
+/.vs
 /Kinect/packages
 /Kinect/.vs
 /Kinect/x64
 /Kinect/dnn_model_2_0.onnx
+/Kinect/Kinect.txt
 /Nuitrack/.vs
 /Nuitrack/x64
-/.vs
-/Kinect/Kinect.txt
-/TCMR/.vs/TCMR/v17
+/Nuitrack/Nuitrack.txt
+/TCMR/.vs
+/Kinect/Debug

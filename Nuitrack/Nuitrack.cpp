@@ -2,7 +2,9 @@
 #include <signal.h>
 #include <iomanip>
 #include <iostream>
+#include <Windows.h>
 
+#define FRAMES 100 //Numero de frames a capturar
 #define PRINT false 
 //false -> Solo numero articulaciones captadas
 //true -> Numero y posiciones de cada una
@@ -26,7 +28,7 @@ void init(); //Inicializacion de lo relacionado con la camara
 
 int main(int argc, char* argv[])
 {
-	cout << "Configurando camara..." << endl;
+	cout << "Configurando sensor, espere por favor..." << endl;
 	try { init(); }
 	catch (const exception& e)
 	{
@@ -35,8 +37,15 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	cout << "La captura comenzara en 3..." << endl;
+	Sleep(1000);
+	cout << "2..." << endl;
+	Sleep(1000);
+	cout << "1..." << endl;
+	Sleep(1000);
+
 	//Bucle de captura
-	for (int frame = 0; frame < 200; frame++)
+	for (int frame = 0; frame < FRAMES; frame++)
 	{
 		cout << "Procesando frame " << frame + 1 << endl;
 		fprintf(fichero, "Frame %d\n", frame + 1);

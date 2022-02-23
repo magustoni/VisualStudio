@@ -1,8 +1,9 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 #include <iostream>
 #include <k4a/k4a.hpp>
 #include <k4abt.hpp>
 
+#define FRAMES 100
 #define PRINT false 
 //false -> Solo numero articulaciones captadas
 //true -> Numero y posiciones de cada una
@@ -29,7 +30,7 @@ void init(); //Inicializacion de lo relacionado con la camara
 
 int main()
 {
-	cout << "Configurando camara..." << endl;
+	cout << "Configurando sensor, espere por favor..." << endl;
 	try { init(); }
 	catch (const exception& e)
 	{
@@ -37,9 +38,9 @@ int main()
 			<< "    " << e.what() << endl;
 		return 1;
 	}
-	
+
 	//Bucle de captura
-	for (int frame = 0; frame < 50; frame++)
+	for (int frame = 0; frame < FRAMES; frame++)
 	{
 		cout << "Procesando frame " << frame + 1 << endl;
 		//Obtener captura
@@ -78,14 +79,14 @@ const char* name(int i) {
 	case 4: return "Clavicula Izq\t";
 	case 5: return "Hombro Izq\t";
 	case 6: return "Codo Izq\t";
-	case 7: return "Muñeca Izq\t";
+	case 7: return "Muneca Izq\t";
 	case 8: return "Mano Izq\t";
 	case 9: return "Palma Izq\t";
 	case 10: return "Pulgar Izq\t";
 	case 11: return "Clavicula Der\t";
 	case 12: return "Hombro Der\t";
 	case 13: return "Codo Der\t";
-	case 14: return "Muñeca Der\t";
+	case 14: return "Muneca Der\t";
 	case 15: return "Mano Der\t";
 	case 16: return "Palma Der\t";
 	case 17: return "Pulgar Der\t";
@@ -136,16 +137,16 @@ int print_body_information(k4abt_body_t body)
 		}
 	}
 	return caught;
-}
-void init()  {
-	//Configuración de la cámara
+} 
+void init() {
+	//Configuracion de la camara
 	k4a_device_configuration_t device_config = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;
 	device_config.depth_mode = K4A_DEPTH_MODE_NFOV_2X2BINNED;
 	device = k4a::device::open(0);
 	device.start_cameras(&device_config);
 	k4a::calibration sensor_calibration = device.get_calibration(device_config.depth_mode, device_config.color_resolution);
 
-	//Inicialización del objeto "tracker"
+	//Inicializacion del objeto "tracker"
 	tracker = k4abt::tracker::create(sensor_calibration);
 
 	//Apertura del fichero de salida
