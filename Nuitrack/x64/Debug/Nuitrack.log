@@ -1,0 +1,19 @@
+﻿  Nuitrack.cpp
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\DepthFrame.h(35,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\DepthFrame.h(43,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\modules\DepthSensor.h(178,1): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\RGBFrame.h(36,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\RGBFrame.h(44,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\UserFrame.h(58,1): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\UserFrame.h(70,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\UserFrame.h(78,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\SkeletonData.h(61,1): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\SkeletonData.h(67,1): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\SkeletonData.h(86,46): warning C4244: 'return': conversión de 'float' a 'uint64_t'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\GestureData.h(48,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\GestureData.h(68,1): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\GestureData.h(104,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\GestureData.h(135,1): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\HandTrackerData.h(49,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\nuitrack\types\HandTrackerData.h(70,1): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Nuitrack.vcxproj -> C:\Users\mateo\Documents\Visual Studio 2022\Projects\Nuitrack\x64\Debug\Nuitrack.exe
