@@ -1,5 +1,6 @@
 /Kinect/packages
 /Kinect/.vs
 /Kinect/x64
+/Kinect/dnn_model_2_0.onnx
 /Nuitrack/.vs
 /Nuitrack/x64
