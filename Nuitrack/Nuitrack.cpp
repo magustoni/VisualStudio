@@ -5,8 +5,8 @@
 #include <fstream>
 
 
-#define FRAMES 100 //Numero de frames a capturar
-#define MODE 0 //Modo de funcionamiento
+#define FRAMES 200 //Numero de frames a capturar
+#define MODE 1 //Modo de funcionamiento
 //0 -> Modo analisis manual en .txt
 //1- > Modo captura datos en .xls
 #define PRINT false //Salida (solo modo 0)
@@ -51,6 +51,8 @@ int main(int argc, char* argv[])
 			fichero << name(k) << " Y\t";
 			fichero << name(k) << " Z\t";
 		}
+		fichero << "Distancia muñecas\t";
+		fichero << "Distancia tobillos\t";
 		fichero << endl;
 	}
 
@@ -197,9 +199,16 @@ void onSkeletonUpdate(SkeletonData::Ptr skeletonData)
 		fichero << "Captadas " << caught << " / 20 articulaciones de interes" << endl << endl;
 	}
 	if (MODE == 1) {
+		float distancia_tobillos, distancia_muñecas;
 		for (int i = 0; i < joints.size(); i++)
 			if (belongs(i, desired_joints))
 				fichero << joints[i].real.x << "\t" << joints[i].real.y << "\t" << joints[i].real.z << "\t";
+
+		distancia_tobillos = sqrt(pow(joints[19].real.x - joints[23].real.x, 2) + pow(joints[19].real.y - joints[23].real.y, 2) + pow(joints[19].real.z - joints[23].real.z, 2));
+		distancia_muñecas = sqrt(pow(joints[8].real.x - joints[14].real.x, 2) + pow(joints[8].real.y - joints[14].real.y, 2) + pow(joints[8].real.z - joints[14].real.z, 2));
+
+		fichero << distancia_muñecas << "\t";
+		fichero << distancia_tobillos << "\t";
 	}
 }
 bool belongs(int index, const vector<JointType> v) {

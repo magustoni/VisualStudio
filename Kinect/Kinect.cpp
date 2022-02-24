@@ -3,15 +3,16 @@
 #include <fstream>
 #include <k4a/k4a.hpp>
 #include <k4abt.hpp>
+#include <math.h>
 
-#define FRAMES 20 //Numero de frames a capturar
+#define FRAMES 60 //Numero de frames a capturar
 #define MODE 1 //Modo de funcionamiento
 //0 -> Modo analisis manual en .txt
 //1- > Modo captura datos en .xls
-#define PRINT false //Salida (solo modo 0)
+#define PRINT true //Salida (solo modo 0)
 //false -> Solo numero articulaciones captadas
 //true -> Numero y posiciones de cada una
-#define GPU false //Activar procesamiento en GPU
+#define GPU true //Activar procesamiento en GPU
 
 using namespace std;
 
@@ -54,6 +55,8 @@ int main()
 			fichero << name(k) << " Y\t";
 			fichero << name(k) << " Z\t";
 		}
+		fichero << "Distancia muñecas\t";
+		fichero << "Distancia tobillos\t";
 		fichero << endl;
 	}
 
@@ -75,12 +78,15 @@ int main()
 
 		if (num_bodies == 0) {
 			if (MODE == 0)
-				fichero << "\t\t--------No se detectaron sujetos-------\n";
+				fichero << "\t\t--------No se detectaron sujetos-------";
+			fichero << endl;
 		}
 		else {
 			body = body_frame.get_body(0);
-			if (MODE == 0) fichero << "Captadas " << print_body_information(body) << " / 20 articulaciones de interes" << endl << endl;
-			if (MODE == 1) print_body_information(body);
+			if (MODE == 0) fichero << "Captadas " << print_body_information(body) << " / 20 articulaciones de interes" << endl;
+			if (MODE == 1)
+				print_body_information(body);
+			fichero << endl;
 		}
 
 	}
@@ -181,10 +187,9 @@ int print_body_information(k4abt_body_t body)
 	if (MODE == 0) {
 		for (int i = 0; i < (int)K4ABT_JOINT_COUNT; i++)
 		{
-			k4a_float3_t position = body.skeleton.joints[i].position;
 			if (body.skeleton.joints[i].confidence_level >= K4ABT_JOINT_CONFIDENCE_MEDIUM){ //El nivel de confianza indica si la articulacion ha sido detectada
 				if (PRINT) //PRINT sirve para elegir si imprimir las posiciones o no
-					fichero << "\t\t" << name(i) << ": Posicion[mm] ( " << (int)position.v[0] << ", " << (int)position.v[1] << ", " << (int)position.v[2] << " ) \t";
+					fichero << "\t\t" << name(i) << ": Posicion[mm] ( " << (int)body.skeleton.joints[i].position.v[0] << ", " << (int)body.skeleton.joints[i].position.v[1] << ", " << (int)body.skeleton.joints[i].position.v[2] << " ) \t";
 				if (belongs(i, desired_joints))
 					caught++;
 			}
@@ -198,17 +203,23 @@ int print_body_information(k4abt_body_t body)
 			}
 		}
 	}
+
 	if (MODE == 1) {
+		float distancia_tobillos, distancia_muñecas;
 		for (int i = 0; i < (int)K4ABT_JOINT_COUNT; i++)
 		{
-			k4a_float3_t position = body.skeleton.joints[i].position;
 			if (belongs(i, desired_joints))	{
 				if (body.skeleton.joints[i].confidence_level >= K4ABT_JOINT_CONFIDENCE_MEDIUM) //El nivel de confianza indica si la articulacion ha sido detectada
-					fichero << position.v[0] << "\t" << position.v[1] << "\t" << position.v[2] << "\t";
+					fichero << body.skeleton.joints[i].position.v[0] << "\t" << body.skeleton.joints[i].position.v[1] << "\t" << body.skeleton.joints[i].position.v[2] << "\t";
 				else fichero << 0 << "\t" << 0 << "\t" << 0 << "\t";
 			}
 		}
-		fichero << endl;
+
+		distancia_tobillos = sqrt(pow(body.skeleton.joints[20].position.v[0] - body.skeleton.joints[24].position.v[0], 2) + pow(body.skeleton.joints[20].position.v[1] - body.skeleton.joints[24].position.v[1], 2) + pow(body.skeleton.joints[20].position.v[2] - body.skeleton.joints[24].position.v[2], 2));
+		distancia_muñecas = sqrt(pow(body.skeleton.joints[7].position.v[0] - body.skeleton.joints[14].position.v[0], 2) + pow(body.skeleton.joints[7].position.v[1] - body.skeleton.joints[14].position.v[1], 2) + pow(body.skeleton.joints[7].position.v[2] - body.skeleton.joints[14].position.v[2], 2));
+	
+		fichero << distancia_muñecas << "\t";
+		fichero << distancia_tobillos << "\t";
 	}
 	return caught;
 }
@@ -221,13 +232,11 @@ void init() {
 
 	//Inicializacion del objeto "tracker"
 	k4a::calibration sensor_calibration = device.get_calibration(device_config.depth_mode, device_config.color_resolution);
-	if (!GPU) {
-		k4abt_tracker_configuration_t tracker_config;
-		tracker_config.processing_mode = K4ABT_TRACKER_PROCESSING_MODE_CPU;
-		tracker = k4abt::tracker::create(sensor_calibration, tracker_config);
-	}
-	else tracker = k4abt::tracker::create(sensor_calibration);
-
+	k4abt_tracker_configuration_t tracker_config;
+	if (GPU) tracker_config.processing_mode = K4ABT_TRACKER_PROCESSING_MODE_GPU;
+	else tracker_config.processing_mode = K4ABT_TRACKER_PROCESSING_MODE_CPU;
+	tracker = k4abt::tracker::create(sensor_calibration, tracker_config);
+	
 	//Apertura del fichero de salida
 	if (MODE == 0)	fichero.open("Kinect.txt", fstream::out);
 	if (MODE == 1)	fichero.open("Kinect.xls", fstream::out);
