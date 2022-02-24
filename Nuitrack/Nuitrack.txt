@@ -1,3 +1,5 @@
+Modo analisis manual
+
 Frame 1
 		--------No se detectaron sujetos-------
 Frame 2
@@ -11,155 +13,105 @@ Frame 5
 Frame 6
 		--------No se detectaron sujetos-------
 Frame 7
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 8
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 9
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 10
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 11
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 12
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 13
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 14
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 15
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 16
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 17
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 18
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 19
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 20
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 21
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 22
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 23
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 24
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 25
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 26
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 27
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 28
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 29
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 30
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 31
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 32
-Captadas 13/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 33
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 34
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 35
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 36
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 37
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 38
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 39
-Captadas 11/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 40
-Captadas 11/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 41
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 42
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 43
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 44
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 45
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 46
-Captadas 12/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 47
-Captadas 11/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 48
-Captadas 11/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 49
-Captadas 9/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 50
-Captadas 9/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 51
-Captadas 8/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 52
-Captadas 8/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 53
-Captadas 8/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 54
-Captadas 8/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 55
-Captadas 8/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 56
-Captadas 8/20 articulaciones de interes
-
+		--------No se detectaron sujetos-------
 Frame 57
 		--------No se detectaron sujetos-------
 Frame 58
@@ -245,6 +197,8 @@ Frame 97
 Frame 98
 		--------No se detectaron sujetos-------
 Frame 99
-		--------No se detectaron sujetos-------
+Captadas 16 / 20 articulaciones de interes
+
 Frame 100
-		--------No se detectaron sujetos-------
+Captadas 16 / 20 articulaciones de interes
+
