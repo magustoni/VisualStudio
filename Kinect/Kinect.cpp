@@ -4,17 +4,19 @@
 #include <k4a/k4a.hpp>
 #include <k4abt.hpp>
 #include <math.h>
+#include <chrono>
 
-#define FRAMES 60 //Numero de frames a capturar
+#define FRAMES 20 //Numero de frames a capturar
 #define MODE 1 //Modo de funcionamiento
 //0 -> Modo analisis manual en .txt
-//1- > Modo captura datos en .xls
+//1- > Modo captura datos en .csv
 #define PRINT true //Salida (solo modo 0)
-//false -> Solo numero articulaciones captadas
+//false -> Solo numero desired_joints captadas
 //true -> Numero y posiciones de cada una
-#define GPU true //Activar procesamiento en GPU
+#define GPU false //Activar procesamiento en GPU
 
 using namespace std;
+using namespace std::chrono;
 
 //Variables globales
 k4a::device device; //Dispositivo asociado a la camara
@@ -24,9 +26,10 @@ k4abt::frame body_frame; //Frame del cuerpo
 k4abt_body_t body; //Objeto cuerpo
 uint32_t num_bodies; //Numero de cuerpos detectados
 fstream fichero; //Fichero de salida
+steady_clock::time_point t_init, t_now;
 
-//Conjunto de articulaciones de interes
-const vector<int> desired_joints = { 1,2,3,4,5,6,7,11,12,13,14,18,19,20,21,22,23,24,25,26 };
+//Conjunto de desired_joints de interes
+const vector<int> desired_joints = {26,3,2,1,0,5,6,8,12,13,15,22,23,24,18,19,20};
 
 //Funciones
 const char* name(int i); //Devuelve el nombre de la articulacion segun su numero
@@ -49,16 +52,16 @@ int main()
 	if (MODE == 0) fichero << "Modo analisis manual" << endl << endl;
 	if (MODE == 1)
 	{
-		fichero << "Frame\t\t";
+		fichero << "Frame\t\tTiempo\t";
 		for (auto k : desired_joints) {
 			fichero << name(k) << " X\t";
 			fichero << name(k) << " Y\t";
 			fichero << name(k) << " Z\t";
 		}
-		fichero << "Distancia muñecas\t";
-		fichero << "Distancia tobillos\t";
 		fichero << endl;
 	}
+
+	t_init = high_resolution_clock::now();
 
 	//Bucle de captura
 	for (int frame = 0; frame < FRAMES; frame++)
@@ -83,7 +86,7 @@ int main()
 		}
 		else {
 			body = body_frame.get_body(0);
-			if (MODE == 0) fichero << "Captadas " << print_body_information(body) << " / 20 articulaciones de interes" << endl;
+			if (MODE == 0) fichero << "Captadas " << print_body_information(body) << " / 20 desired_joints de interes" << endl;
 			if (MODE == 1)
 				print_body_information(body);
 			fichero << endl;
@@ -94,7 +97,7 @@ int main()
 
 	fichero.close();
 	if (MODE == 0) system("Kinect.txt");
-	if (MODE == 1) system("Kinect.xls");
+	if (MODE == 1) system("Kinect.csv");
 
 	return 0;
 }
@@ -182,12 +185,12 @@ bool belongs(int index, const vector<int> v) {
 }
 int print_body_information(k4abt_body_t body)
 {
-	int caught = 0; //Numero de articulaciones de interes captadas
+	int caught = 0; //Numero de desired_joints de interes captadas
 
 	if (MODE == 0) {
-		for (int i = 0; i < (int)K4ABT_JOINT_COUNT; i++)
+		for (auto i : desired_joints)
 		{
-			if (body.skeleton.joints[i].confidence_level >= K4ABT_JOINT_CONFIDENCE_MEDIUM){ //El nivel de confianza indica si la articulacion ha sido detectada
+			if (body.skeleton.joints[i].confidence_level >= K4ABT_JOINT_CONFIDENCE_MEDIUM) { //El nivel de confianza indica si la articulacion ha sido detectada
 				if (PRINT) //PRINT sirve para elegir si imprimir las posiciones o no
 					fichero << "\t\t" << name(i) << ": Posicion[mm] ( " << (int)body.skeleton.joints[i].position.v[0] << ", " << (int)body.skeleton.joints[i].position.v[1] << ", " << (int)body.skeleton.joints[i].position.v[2] << " ) \t";
 				if (belongs(i, desired_joints))
@@ -205,21 +208,17 @@ int print_body_information(k4abt_body_t body)
 	}
 
 	if (MODE == 1) {
-		float distancia_tobillos, distancia_muñecas;
-		for (int i = 0; i < (int)K4ABT_JOINT_COUNT; i++)
+		t_now = high_resolution_clock::now();
+		fichero << float(duration_cast<milliseconds>(t_now - t_init).count()) / 1000 << "\t";
+
+		for (auto i : desired_joints)
 		{
-			if (belongs(i, desired_joints))	{
+			if (belongs(i, desired_joints)) {
 				if (body.skeleton.joints[i].confidence_level >= K4ABT_JOINT_CONFIDENCE_MEDIUM) //El nivel de confianza indica si la articulacion ha sido detectada
 					fichero << body.skeleton.joints[i].position.v[0] << "\t" << body.skeleton.joints[i].position.v[1] << "\t" << body.skeleton.joints[i].position.v[2] << "\t";
 				else fichero << 0 << "\t" << 0 << "\t" << 0 << "\t";
 			}
 		}
-
-		distancia_tobillos = sqrt(pow(body.skeleton.joints[20].position.v[0] - body.skeleton.joints[24].position.v[0], 2) + pow(body.skeleton.joints[20].position.v[1] - body.skeleton.joints[24].position.v[1], 2) + pow(body.skeleton.joints[20].position.v[2] - body.skeleton.joints[24].position.v[2], 2));
-		distancia_muñecas = sqrt(pow(body.skeleton.joints[7].position.v[0] - body.skeleton.joints[14].position.v[0], 2) + pow(body.skeleton.joints[7].position.v[1] - body.skeleton.joints[14].position.v[1], 2) + pow(body.skeleton.joints[7].position.v[2] - body.skeleton.joints[14].position.v[2], 2));
-	
-		fichero << distancia_muñecas << "\t";
-		fichero << distancia_tobillos << "\t";
 	}
 	return caught;
 }
@@ -227,6 +226,7 @@ void init() {
 	//Configuracion de la camara
 	k4a_device_configuration_t device_config = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;
 	device_config.depth_mode = K4A_DEPTH_MODE_NFOV_2X2BINNED;
+	device_config.color_resolution = K4A_COLOR_RESOLUTION_720P;
 	device = k4a::device::open(0);
 	device.start_cameras(&device_config);
 
@@ -236,8 +236,8 @@ void init() {
 	if (GPU) tracker_config.processing_mode = K4ABT_TRACKER_PROCESSING_MODE_GPU;
 	else tracker_config.processing_mode = K4ABT_TRACKER_PROCESSING_MODE_CPU;
 	tracker = k4abt::tracker::create(sensor_calibration, tracker_config);
-	
+
 	//Apertura del fichero de salida
 	if (MODE == 0)	fichero.open("Kinect.txt", fstream::out);
-	if (MODE == 1)	fichero.open("Kinect.xls", fstream::out);
+	if (MODE == 1)	fichero.open("Kinect.csv", fstream::out);
 }
