@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <iostream>
 #include <fstream>
-
+#include <chrono>
 
 #define FRAMES 200 //Numero de frames a capturar
 #define MODE 1 //Modo de funcionamiento
@@ -15,15 +15,17 @@
 
 using namespace tdv::nuitrack;
 using namespace std;
+using namespace std::chrono;
 
 //Variables globales
 fstream fichero; //Fichero de salida
 SkeletonTracker::Ptr skeletonTracker; //Modulo "tracker"
+steady_clock::time_point t_init, t_now;
 
 //Conjunto de articulaciones de interes
-const vector<JointType> desired_joints = { JOINT_HEAD, JOINT_NECK, JOINT_TORSO, JOINT_WAIST, JOINT_LEFT_COLLAR, JOINT_LEFT_SHOULDER, 
-JOINT_LEFT_ELBOW, JOINT_LEFT_WRIST, JOINT_RIGHT_COLLAR, JOINT_RIGHT_SHOULDER, JOINT_RIGHT_ELBOW,  JOINT_RIGHT_WRIST, JOINT_LEFT_HIP,
-JOINT_LEFT_KNEE, JOINT_LEFT_ANKLE, JOINT_LEFT_FOOT, JOINT_RIGHT_HIP, JOINT_RIGHT_KNEE, JOINT_RIGHT_ANKLE, JOINT_RIGHT_FOOT };
+const vector<JointType> desired_joints = { JOINT_HEAD, JOINT_NECK, JOINT_TORSO, JOINT_WAIST, JOINT_LEFT_SHOULDER, 
+JOINT_LEFT_ELBOW, JOINT_LEFT_WRIST, JOINT_RIGHT_SHOULDER, JOINT_RIGHT_ELBOW,  JOINT_RIGHT_WRIST, 
+JOINT_RIGHT_HIP, JOINT_RIGHT_KNEE, JOINT_RIGHT_ANKLE, JOINT_LEFT_HIP, JOINT_LEFT_KNEE, JOINT_LEFT_ANKLE };
 
 //Funciones
 const char* name(JointType joint); //Devuelve el nombre de la articulacion segun su tipo
@@ -45,16 +47,16 @@ int main(int argc, char* argv[])
 	if (MODE == 0) fichero << "Modo analisis manual" << endl << endl;
 	if (MODE == 1)
 	{
-		fichero << "Frame\t\t";
+		fichero << "Frame\t\tTiempo\t";
 		for (auto k : desired_joints) {
 			fichero << name(k) << " X\t";
 			fichero << name(k) << " Y\t";
 			fichero << name(k) << " Z\t";
 		}
-		fichero << "Distancia muñecas\t";
-		fichero << "Distancia tobillos\t";
 		fichero << endl;
 	}
+
+	t_init = high_resolution_clock::now();
 
 	//Bucle de captura
 	for (int frame = 0; frame < FRAMES; frame++)
@@ -199,16 +201,11 @@ void onSkeletonUpdate(SkeletonData::Ptr skeletonData)
 		fichero << "Captadas " << caught << " / 20 articulaciones de interes" << endl << endl;
 	}
 	if (MODE == 1) {
-		float distancia_tobillos, distancia_muñecas;
-		for (int i = 0; i < joints.size(); i++)
-			if (belongs(i, desired_joints))
+		t_now = high_resolution_clock::now();
+		fichero << float(duration_cast<milliseconds>(t_now - t_init).count()) / 1000 << "\t";
+
+		for (auto i : desired_joints)
 				fichero << joints[i].real.x << "\t" << joints[i].real.y << "\t" << joints[i].real.z << "\t";
-
-		distancia_tobillos = sqrt(pow(joints[19].real.x - joints[23].real.x, 2) + pow(joints[19].real.y - joints[23].real.y, 2) + pow(joints[19].real.z - joints[23].real.z, 2));
-		distancia_muñecas = sqrt(pow(joints[8].real.x - joints[14].real.x, 2) + pow(joints[8].real.y - joints[14].real.y, 2) + pow(joints[8].real.z - joints[14].real.z, 2));
-
-		fichero << distancia_muñecas << "\t";
-		fichero << distancia_tobillos << "\t";
 	}
 }
 bool belongs(int index, const vector<JointType> v) {

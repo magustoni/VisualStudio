@@ -188,7 +188,7 @@ int print_body_information(k4abt_body_t body)
 	int caught = 0; //Numero de desired_joints de interes captadas
 
 	if (MODE == 0) {
-		for (auto i : desired_joints)
+		for (int i = 0 ; i < K4ABT_JOINT_COUNT ; i++)
 		{
 			if (body.skeleton.joints[i].confidence_level >= K4ABT_JOINT_CONFIDENCE_MEDIUM) { //El nivel de confianza indica si la articulacion ha sido detectada
 				if (PRINT) //PRINT sirve para elegir si imprimir las posiciones o no
