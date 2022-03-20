@@ -1,53 +1,23 @@
 #include "TrackingViewer.hpp"
-#include <iostream>
-#include <fstream>
-#include <chrono>
-#include <ctime>
-
-using namespace std;
-// -------------------------------------------------
-//            2D LEFT VIEW
-// -------------------------------------------------
 
 template<typename T>
 inline cv::Point2f cvt(T pt, sl::float2 scale) {
     return cv::Point2f(pt.x * scale.x, pt.y * scale.y);
 }
 
-template<typename T>
-inline cv::Point3f cvt_3D(T pt, sl::float3 scale) {
-	return cv::Point3f(pt.x * scale.x, pt.y * scale.y, pt.z * scale.z);
-}
+void render_2D(cv::Mat& left_display, sl::float2 img_scale, std::vector<sl::ObjectData>& objects, bool isTrackingON, sl::BODY_FORMAT body_format) {
+	cv::Mat overlay = left_display.clone();
+	cv::Rect roi_render(0, 0, left_display.size().width, left_display.size().height);
 
-void render_2D(cv::Mat &left_display, sl::float2 img_scale, std::vector<sl::ObjectData> &objects, bool isTrackingON, sl::BODY_FORMAT body_format) {
-    cv::Mat overlay = left_display.clone();
-    cv::Rect roi_render(0, 0, left_display.size().width, left_display.size().height);
-
-    // render skeleton joints and bones
-	static int j = 0;            
-	/*static ofstream myFile;
-	myFile.open("test.csv", std::ios_base::app);*/
-    for (auto i = objects.rbegin(); i != objects.rend(); ++i) {
-        sl::ObjectData& obj = (*i);
-        if (renderObject(obj, isTrackingON)) {
-            if (obj.keypoint.size()) {
-                cv::Scalar color = generateColorID_u(obj.id);
+	// render skeleton joints and bones
+	for (auto i = objects.rbegin(); i != objects.rend(); ++i) {
+		sl::ObjectData& obj = (*i);
+		if (renderObject(obj, isTrackingON)) {
+			if (obj.keypoint_2d.size()) {
+				cv::Scalar color = generateColorID_u(obj.id);
 				if (body_format == sl::BODY_FORMAT::POSE_18) {
 					// skeleton bones
-					
-					// current date and time on the current system
-					char fecha[1000];
-					time_t t = time(NULL);
-					struct tm* p = localtime(&t);
-					strftime(fecha, 1000, "%A, %B %d %Y %H:%M:%S", p);
-					//myFile << fecha << ";";
-
-					j++;
-					//cout << "--------------------Imprimo articulaciones segundo " << j << "\n";
-					int k = 0;
-					//myFile << "Las 17 articulaciones medidas:" << ";";
 					for (const auto& parts : SKELETON_BONES) {
-						k++;
 						auto kp_a = cvt(obj.keypoint_2d[getIdx(parts.first)], img_scale);
 						auto kp_b = cvt(obj.keypoint_2d[getIdx(parts.second)], img_scale);
 						if (roi_render.contains(kp_a) && roi_render.contains(kp_b))
@@ -59,23 +29,14 @@ void render_2D(cv::Mat &left_display, sl::float2 img_scale, std::vector<sl::Obje
 							cv::line(left_display, kp_a, kp_b, color, 1, cv::LINE_AA);
 #endif
 						}
-						//cout << "\tArticulacion kp_a(" << k <<"): x = " << kp_a.x << "; y = " << kp_a.y << "\n";
-						//cout << "\tArticulacion kp_b(" << k << "): x = " << kp_b.x << "; y = " << kp_b.y << "\n";
-						if ((k == 1) || (k == 8) || (k == 10)) {
-							//myFile << kp_a.x << "," << kp_a.y << "," << kp_b.x << "," << kp_b.y << ",";
-						}
-						else{
-							//myFile<< kp_b.x << "," << kp_b.y << ",";
-						}
 					}
-					
 					auto hip_left = obj.keypoint_2d[getIdx(sl::BODY_PARTS::LEFT_HIP)];
 					auto hip_right = obj.keypoint_2d[getIdx(sl::BODY_PARTS::RIGHT_HIP)];
 					auto spine = (hip_left + hip_right) / 2;
 					auto neck = obj.keypoint_2d[getIdx(sl::BODY_PARTS::NECK)];
 
 					if (hip_left.x > 0 && hip_left.y > 0 && hip_right.x > 0 && hip_right.y > 0 && neck.x > 0 && neck.y > 0) {
-						k++;
+
 						auto kp_a = cvt(spine, img_scale);
 						auto kp_b = cvt(obj.keypoint_2d[getIdx(sl::BODY_PARTS::NECK)], img_scale);
 						if (roi_render.contains(kp_a) && roi_render.contains(kp_b))
@@ -86,14 +47,6 @@ void render_2D(cv::Mat &left_display, sl::float2 img_scale, std::vector<sl::Obje
 							cv::line(left_display, kp_a, kp_b, color, 1, cv::LINE_AA);
 #endif
 						}
-						//cout << "\tArticulacion kp_a(" << k << "): x = " << kp_a.x << "; y = " << kp_a.y << "\n";
-						//cout << "\tArticulacion kp_b(" << k << "): x = " << kp_b.x << "; y = " << kp_b.y << "\n";
-						//myFile << "Centro cadera" << ";";
-						//myFile << kp_a.x << "," << kp_a.y;
-					}
-					else {
-						//myFile << "Centro cadera" << ";";
-						//myFile << "- , -";
 					}
 
 					// skeleton joints
@@ -105,9 +58,6 @@ void render_2D(cv::Mat &left_display, sl::float2 img_scale, std::vector<sl::Obje
 					cv::Point2f cv_kp = cvt(spine, img_scale);
 					if (hip_left.x > 0 && hip_left.y > 0 && hip_right.x > 0 && hip_right.y > 0)
 						cv::circle(left_display, cv_kp, 3, color, -1);
-					//cout << "---Fin Impresion articulaciones segundo " << j << "---\n\n";
-					//myFile << endl;
-					//myFile.close();
 				}
 				else if (body_format == sl::BODY_FORMAT::POSE_34) {
 					// skeleton bones
@@ -132,12 +82,25 @@ void render_2D(cv::Mat &left_display, sl::float2 img_scale, std::vector<sl::Obje
 							cv::circle(left_display, cv_kp, 3, color, -1);
 					}
 				}
-            }
+			}
 
-        }
-    }
-    // Here, overlay is as the left image, but with opaque masks on each detected objects
-    cv::addWeighted(left_display, 0.9, overlay, 0.1, 0.0, left_display);
+		}
+	}
+	// Here, overlay is as the left image, but with opaque masks on each detected objects
+	cv::addWeighted(left_display, 0.9, overlay, 0.1, 0.0, left_display);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+#include <iostream>
+#include <fstream>
+#include <chrono>
+
+using namespace std;
+
+template<typename T>
+inline cv::Point3f cvt_3D(T pt, sl::float3 scale) {
+	return cv::Point3f(pt.x * scale.x, pt.y * scale.y, pt.z * scale.z);
 }
 
 void render_3D(cv::Mat &left_display, sl::float3 img_scale, std::vector<sl::ObjectData>& objects, bool isTrackingON, sl::BODY_FORMAT body_format) {
@@ -241,7 +204,7 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 				char fecha[1000];
 				/*time_t t = time(NULL);
 				struct tm* p = localtime(&t);
-				strftime(fecha, 1000, "%A, %B %d %Y %H:%M:%S", p);*/
+				strftime(fecha, 1000, "%A, %B %d %Y %H:%M:%S", p);
 				//j++;
 				//time_fps = j / 100.0; //Ponlo bonito
 				//myFile << to_string(time_fps) << ",";
@@ -348,7 +311,7 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 						}
 						else {
 							myFile << kp_b_3D.x << "," << kp_b_3D.y << "," << kp_b_3D.z << ",";
-						}*/
+						}
 					}
 					auto kp_3D_1 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::HEAD)], img_scale_3D);
 					myFile << kp_3D_1.x << "," << kp_3D_1.y << "," << kp_3D_1.z << ",";
@@ -404,3 +367,5 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 	// Here, overlay is as the left image, but with opaque masks on each detected objects
 	cv::addWeighted(left_display, 0.9, overlay, 0.1, 0.0, left_display);
 }
+
+*/

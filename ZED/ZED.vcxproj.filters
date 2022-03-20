@@ -7,7 +7,7 @@
     <ClCompile Include="C:\Users\mateo\Documents\Visual Studio 2022\Projects\ZED\src\TrackingViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\mateo\Documents\Visual Studio 2022\Projects\ZED\src\main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

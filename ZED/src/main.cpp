@@ -18,224 +18,234 @@
 //
 ///////////////////////////////////////////////////////////////////////////
 
-// ZED includes
-#include <sl/Camera.hpp>
-
-// Sample includes
-#include "GLViewer.hpp"
-#include "TrackingViewer.hpp"
-
-#include <iostream>
-#include <fstream>
-
-#include <chrono>
-#include <ctime>
-
-#define articulaciones 2 //1-18 articulaciones | 2-34 articulaciones
-
-// Using std and sl namespaces
-using namespace std;
-using namespace sl;
-
-bool is_playback = false;
-void print(string msg_prefix, ERROR_CODE err_code = ERROR_CODE::SUCCESS, string msg_suffix = "");
-void parseArgs(int argc, char **argv, InitParameters& param);
-
-int main(int argc, char **argv) {
-
 #ifdef _SL_JETSON_
-    const bool isJetson = true;
+const bool isJetson = true;
 #else
-    const bool isJetson = false;
+const bool isJetson = false;
 #endif
 
-    static ofstream myFile;
-    myFile.open("test.csv", std::ios_base::app);
+#include <sl/Camera.hpp>
+#include "GLViewer.hpp"
+#include "TrackingViewer.hpp"
+#include <iostream>
+#include <fstream>
+#include <chrono>
 
-    // Create ZED objects
-    Camera zed;
-    InitParameters init_parameters;
-    init_parameters.camera_resolution = RESOLUTION::VGA;//RESOLUTION::HD1080;
-    // On Jetson the object detection combined with an heavy depth mode could reduce the frame rate too much
-    init_parameters.depth_mode = isJetson ? DEPTH_MODE::PERFORMANCE : DEPTH_MODE::ULTRA;
-    init_parameters.coordinate_system = COORDINATE_SYSTEM::RIGHT_HANDED_Y_UP;
-    init_parameters.camera_fps = 100;   
+#define JOINTS 0 // 0 -> 34 articulaciones | 1 -> 18 articulaciones
+#define INPUT 0 // 0 -> video | 1 -> .svo
 
-    parseArgs(argc, argv, init_parameters);
+using namespace std;
+using namespace sl;
+using namespace std::chrono;
 
-    // Open the camera
-    auto returned_state = zed.open(init_parameters);
-    if (returned_state != ERROR_CODE::SUCCESS) {
-        print("Open Camera", returned_state, "\nExit program.");
-        zed.close();
-        return EXIT_FAILURE;
-    }
+template<typename T>
+inline cv::Point3f cvt_3D(T pt, sl::float3 scale) {
+	return cv::Point3f(pt.x * scale.x, pt.y * scale.y, pt.z * scale.z);
+}
 
-    // Enable Positional tracking (mandatory for object detection)
-    PositionalTrackingParameters positional_tracking_parameters;
-    //If the camera is static, uncomment the following line to have better performances and boxes sticked to the ground.
+bool quit = false; //Termina el bucle si true
+void print(string msg_prefix, ERROR_CODE err_code = ERROR_CODE::SUCCESS, string msg_suffix = ""); //Imprime mensaje de error si necesario
 
-    returned_state = zed.enablePositionalTracking(positional_tracking_parameters);
-    if (returned_state != ERROR_CODE::SUCCESS) {
-        print("enable Positional Tracking", returned_state, "\nExit program.");
-        zed.close();
-        return EXIT_FAILURE;
-    }
+fstream file; //Fichero de salida
+Camera zed; //Objeto camara
+Objects bodies; //Objeto cuerpos
+ERROR_CODE returned_state; //Codigo de error|exito
+steady_clock::time_point t_init, t_now; //Medicion de tiempo
 
-    // Enable the Objects detection module
-    ObjectDetectionParameters obj_det_params;
-    obj_det_params.enable_tracking = true; // track people across images flow
-    obj_det_params.enable_body_fitting = false; // smooth skeletons moves
-    if (articulaciones == 1)
-        obj_det_params.body_format = sl::BODY_FORMAT::POSE_18;
-    else
-        obj_det_params.body_format = sl::BODY_FORMAT::POSE_34;
-    obj_det_params.detection_model = isJetson ? DETECTION_MODEL::HUMAN_BODY_FAST : DETECTION_MODEL::HUMAN_BODY_ACCURATE;
-    returned_state = zed.enableObjectDetection(obj_det_params);
-    if (returned_state != ERROR_CODE::SUCCESS) {
-        print("enable Object Detection", returned_state, "\nExit program.");
-        zed.close();
-        return EXIT_FAILURE;
-    }
+int main(int argc, char** argv)
+{
+	////////////////////////////////////////////////////////////////////////////////CONFIG INICIALES////////////////////////////////////////////////////////////////////////////////
 
+	//Apertura del fichero
+	file.open("release/ZED.csv", fstream::out);
+
+	//Parametros ZED
+	InitParameters init_parameters;
+	init_parameters.camera_resolution = RESOLUTION::VGA; //Resolucion
+	init_parameters.camera_fps = 100; //FPS
+	init_parameters.depth_mode = isJetson ? DEPTH_MODE::PERFORMANCE : DEPTH_MODE::ULTRA; //Modo profundidad
+	init_parameters.coordinate_system = COORDINATE_SYSTEM::IMAGE; //Sistema coordenadas --------------------------PROBAR
+	if (INPUT) init_parameters.input.setFromSVOFile("input.svo"); //Entrada desde fichero ---------------------------------PROBAR
+
+	//Inicializacion ZED
+	returned_state = zed.open(init_parameters);
+	if (returned_state != ERROR_CODE::SUCCESS) {
+		print("Open Camera", returned_state, "\nExit program.");
+		zed.close();
+		return EXIT_FAILURE;
+	}
+
+	/* OJO A ESTO, PARECE LO DEL FONDO
+
+	PositionalTrackingParameters positional_tracking_parameters;
+
+	returned_state = zed.enablePositionalTracking(positional_tracking_parameters);
+	if (returned_state != ERROR_CODE::SUCCESS) {
+		print("enable Positional Tracking", returned_state, "\nExit program.");
+		zed.close();
+		return EXIT_FAILURE;
+	}
+
+	*/
+
+	//Modulo deteccion objetos
+	ObjectDetectionRuntimeParameters objectTracker_parameters_rt;
+	objectTracker_parameters_rt.detection_confidence_threshold = 40; //Minima confianza admitida (0-100) 
+	ObjectDetectionParameters obj_det_params;
+	obj_det_params.enable_tracking = true; //Habilitar tracking
+	obj_det_params.enable_body_fitting = false; //Suavizar movimientos esqueleto
+	obj_det_params.body_format = JOINTS ? BODY_FORMAT::POSE_18 : BODY_FORMAT::POSE_34; //Num articulaciones
+	obj_det_params.detection_model = isJetson ? DETECTION_MODEL::HUMAN_BODY_FAST : DETECTION_MODEL::HUMAN_BODY_ACCURATE; //Precision
+	returned_state = zed.enableObjectDetection(obj_det_params);
+	if (returned_state != ERROR_CODE::SUCCESS) {
+		print("enable Object Detection", returned_state, "\nExit program.");
+		zed.close();
+		return EXIT_FAILURE;
+	}
+
+	//Configuracion del GUI 2D
 	auto camera_config = zed.getCameraInformation().camera_configuration;
-
-    // For 2D GUI
-    Resolution display_resolution(min((int)camera_config.resolution.width, 1280), min((int)camera_config.resolution.height, 720));
-    cv::Mat image_left_ocv(display_resolution.height, display_resolution.width, CV_8UC4, 1);
-    Mat image_left(display_resolution, MAT_TYPE::U8_C4, image_left_ocv.data, image_left_ocv.step);
-    sl::float2 img_scale(display_resolution.width / (float)camera_config.resolution.width, display_resolution.height / (float) camera_config.resolution.height);
-    sl::float3 img_scale_3D(display_resolution.width / (float)camera_config.resolution.width, display_resolution.height / (float)camera_config.resolution.height);
-    char key = ' ';
-
-	// 3D View
+	Resolution display_resolution(min((int)camera_config.resolution.width, 1280), min((int)camera_config.resolution.height, 720));
+	cv::Mat image_left_ocv(display_resolution.height, display_resolution.width, CV_8UC4, 1);
+	Mat image_left(display_resolution, MAT_TYPE::U8_C4, image_left_ocv.data, image_left_ocv.step);
+	sl::float2 img_scale(display_resolution.width / (float)camera_config.resolution.width, display_resolution.height / (float)camera_config.resolution.height);
+	sl::float3 img_scale_3D(display_resolution.width / (float)camera_config.resolution.width, display_resolution.height / (float)camera_config.resolution.height);
+	//Configuracion de la vista 3D
 	Resolution pc_resolution(min((int)camera_config.resolution.width, 720), min((int)camera_config.resolution.height, 404));
 	auto camera_parameters = zed.getCameraInformation(pc_resolution).camera_configuration.calibration_parameters.left_cam;
 	Mat point_cloud(pc_resolution, MAT_TYPE::F32_C4, MEM::GPU);
-	// Create OpenGL Viewer
+	//Visor OpenGL
 	GLViewer viewer;
 	viewer.init(argc, argv, camera_parameters, obj_det_params.enable_tracking, obj_det_params.body_format);
-
+	bool gl_viewer_available = true;
 	Pose cam_pose;
 	cam_pose.pose_data.setIdentity();
 
-    // Configure object detection runtime parameters
-    ObjectDetectionRuntimeParameters objectTracker_parameters_rt;
-    objectTracker_parameters_rt.detection_confidence_threshold = 40;
 
-    // Create ZED Objects filled in the main loop
-    Objects bodies;
-	bool quit = false;
+	/* OJO A ESTO
 
-    Plane floor_plane; // floor plane handle
-    Transform reset_from_floor_plane; // camera transform once floor plane is detected
+	Plane floor_plane; // floor plane handle
+	Transform reset_from_floor_plane; // camera transform once floor plane is detected
+	bool need_floor_plane = positional_tracking_parameters.set_as_static;
 
-    // Main Loop
-    bool need_floor_plane = positional_tracking_parameters.set_as_static;
-    auto start = std::chrono::system_clock::now();
-	bool gl_viewer_available = true;
-    if (articulaciones == 1)
-        myFile << "TiempoUTC,Nariz.x,Nariz.y,Nariz.z,Cuello.x,Cuello.y,Cuello.z,HombroDerecho.x,HombroDerecho.y,HombroDerecho.z,CodoDerecho.x,CodoDerecho.y,CodoDerecho.z,MuñecaDerecha.x,MuñecaDerecha.y,MuñecaDerecha.z,HombroIzquierdo.x,HombroIzquierdo.y,HombroIzquierdo.z,CodoIzquierdo.x,CodoIzquierdo.y,CodoIzquierdo.z,MuñecaIzquierda.x,MuñecaIzquierda.y,MuñecaIzquierda.z,CaderaDerecha.x,CaderaDerecha.y,CaderaDerecha.z,RodillaDerecha.x,RodillaDerecha.y,RodillaDerecha.z,TobilloDerecho.x,TobilloDerecho.y,TobilloDerecho.z,CaderaIzquierda.x,CaderaIzquierda.y,CaderaIzquierda.z,RodillaIzquierda.x,RodillaIzquierda.y,RodillaIzquierda.z,TobilloIzquierdo.x,TobilloIzquierdo.y,TobilloIzquierdo.z,OjoDerecho.x,OjoDerecho.y,OjoDerecho.z,OrejaDerecha.x,OrejaDerecha.y,OrejaDerecha.z,OjoIzquierdo.x,OjoIzquierdo.y,OjoIzquierdo.z,OrejaIzquierda.x,OrejaIzquierda.y,OrejaIzquierda.z,CentroCadera.x,CentroCadera.y,CentroCadera.z,Clavicula.x,Clavicula.y,Clavicula.z" << endl;
-    else
-        myFile << "TiempoUTC,   Cabeza.x,Cabeza.y,Cabeza.z,Cuello.x,Cuello.y,Cuello.z,Clavicula.x,Clavicula.y,Clavicula.z,Esternon.x,Esternon.y,Esternon.z,Cintura.x,Cintura.y,Cintura.z,HombroIzquierdo.x,HombroIzquierdo.y,HombroIzquierdo.z,CodoIzquierdo.x,CodoIzquierdo.y,CodoIzquierdo.z,MuñecaIzquierda.x,MuñecaIzquierda.y,MuñecaIzquierda.z,HombroDerecho.x,HombroDerechaço.y,HombroDerecho.z,CodoDerecho.x,CodoDerecho.y,CodoDerecho.z,MuñecaDerecha.x,MuñecaDerecha.y,MuñecaDerecha.z,CaderaIzquierda.x,CaderaIzquierda.y,CaderaIzquierda.z,RodillaIzquierda.x,RodillaIzquierda.y,RodillaIzquierda.z,TobilloIzquierdo.x,TobilloIzquierdo.y,TobilloIzquierdo.z,PieIzquierdo.x,PieIzquierdo.y,PieIzquierdo.z,CaderaDerecha.x,CaderaDerecha.y,CaderaDerecha.z,RodillaDerecha.x,RodillaDerecha.y,RodillaDerecha.z,TobilloDerecho.x,TobilloDerecho.y,TobilloDerecho.z,PieDerecho.x,PieDerecho.y,PieDerecho.z" << endl;
-    while (gl_viewer_available && !quit && key != 'q') {
-        // Grab images
-        if (zed.grab() == ERROR_CODE::SUCCESS) {
-            // Once the camera has started, get the floor plane to stick the bounding box to the floor plane.
-            // Only called if camera is static (see PositionalTrackingParameters)
-            if (need_floor_plane) {
-                if (zed.findFloorPlane(floor_plane, reset_from_floor_plane) == ERROR_CODE::SUCCESS) {
-                    need_floor_plane = false;
-                    viewer.setFloorPlaneEquation(floor_plane.getPlaneEquation());
-                }
-            }
+	*/
 
-            // Retrieve Detected Human Bodies
-            zed.retrieveObjects(bodies, objectTracker_parameters_rt);
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            //OCV View
-            zed.retrieveImage(image_left, VIEW::LEFT, MEM::CPU, display_resolution);
+
+	//Cabecera fichero
+	file << "tiempo,head.x,head.y,head.z,neck.x,neck.y,neck.z,spine_top.x,spine_top.y,spine_top.z,spine_mid.x,spine_mid.y,spine_mid.z,spine_bottom.x,spine_bottom.y,spine_bottom.z,left_shoulder.x,left_shoulder.y,left_shoulder.z,left_elbow.x,left_elbow.y,left_elbow.z,left_hand.x,left_hand.y,left_hand.z,right_shoulder.x,right_shoulder.y,right_shoulder.z,right_elbow.x,right_elbow.y,right_elbow.z,right_hand.x,right_hand.y,right_hand.z,right_hip.x,right_hip.y,right_hip.z,right_knee.x,right_knee.y,right_knee.z,right_ankle.x,right_ankle.y,right_ankle.z,left_hip.x,left_hip.y,left_hip.z,left_knee.x,left_knee.y,left_knee.z,left_ankle.x,left_ankle.y,left_ankle.z" << endl;
+	t_init = high_resolution_clock::now();
+
+	//Bucle principal
+	while (gl_viewer_available && !quit)
+	{
+		//Obtencion imagenes
+		if (zed.grab() == ERROR_CODE::SUCCESS) {
+
+			/* OJO A ESTO
+
+			// Once the camera has started, get the floor plane to stick the bounding box to the floor plane.
+			// Only called if camera is static (see PositionalTrackingParameters)
+			if (need_floor_plane) {
+				if (zed.findFloorPlane(floor_plane, reset_from_floor_plane) == ERROR_CODE::SUCCESS) {
+					need_floor_plane = false;
+					viewer.setFloorPlaneEquation(floor_plane.getPlaneEquation());
+				}
+			}
+
+			*/
+
+			//Mediciones
+			zed.retrieveObjects(bodies, objectTracker_parameters_rt);
+			zed.retrieveImage(image_left, VIEW::LEFT, MEM::CPU, display_resolution);
 			zed.retrieveMeasure(point_cloud, MEASURE::XYZRGBA, MEM::GPU, pc_resolution);
 			zed.getPosition(cam_pose, REFERENCE_FRAME::WORLD);
-
-			string window_name = "ZED| 2D View";
-
-			//Update GL View
+			//Actualizar vista GL
 			viewer.updateData(point_cloud, bodies.object_list, cam_pose.pose_data);
-
 			gl_viewer_available = viewer.isAvailable();
-			if (is_playback && zed.getSVOPosition() == zed.getSVONumberOfFrames()) {
-				quit = true;
-			}
-            
-			//render_2D(image_left_ocv, img_scale, bodies.object_list, obj_det_params.enable_tracking, obj_det_params.body_format);
-            //render_3D(image_left_ocv, img_scale_3D, bodies.object_list, obj_det_params.enable_tracking, obj_det_params.body_format);
-            render_complete(image_left_ocv, img_scale, img_scale_3D, bodies.object_list, obj_det_params.enable_tracking, obj_det_params.body_format, start);
-			cv::imshow(window_name, image_left_ocv);
-			key = cv::waitKey(10);
-            printf("%d\n", cam_pose.pose_confidence);
-        }
-    }
 
-    // Release objects
+			//Terminar al finalizar video input
+			if (INPUT && zed.getSVOPosition() == zed.getSVONumberOfFrames()) quit = true;
+
+			//Renderizar imagenes
+			render_2D(image_left_ocv, img_scale, bodies.object_list, obj_det_params.enable_tracking, obj_det_params.body_format);
+
+			//Imprimir archivo
+			t_now = high_resolution_clock::now();
+			file << float(duration_cast<milliseconds>(t_now - t_init).count()) / 1000 << ","; //Conteo de tiempo
+
+			if (!bodies.object_list.empty()) //Si se detectaron esqueletos
+			{
+				cv::Point3f punto3D;
+				sl::ObjectData& obj = *bodies.object_list.rbegin(); //Solo el primer esqueleto detectado
+
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::HEAD)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Cabeza
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::NECK)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Cuello
+				punto3D = (cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_CLAVICLE)], img_scale_3D) + cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_CLAVICLE)], img_scale_3D)) / 2;
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Espina superior
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::CHEST_SPINE)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Esternon
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::PELVIS)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Pelvis
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_SHOULDER)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Hombro izq
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ELBOW)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Codo izq
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_WRIST)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Mano izq
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_SHOULDER)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Hombro der
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ELBOW)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Codo der
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_WRIST)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Mano der
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_HIP)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Cadera der
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_KNEE)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Rodilla der
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ANKLE)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Tobillo der
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_HIP)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Cadera izq
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_KNEE)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z << ","; //Rodilla izq
+				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ANKLE)], img_scale_3D);
+				file << punto3D.x << "," << punto3D.y << "," << punto3D.z; //Tobillo izq
+			}
+
+			file << endl;
+			
+			//Actualizar vista real
+			cv::imshow("ZED 2D View", image_left_ocv);
+		}
+	}
+
+	//Liberar objetos y modulos
 	viewer.exit();
 	image_left.free();
-    point_cloud.free();
-    floor_plane.clear();
-    bodies.object_list.clear();
+	point_cloud.free();
+	/*floor_plane.clear();*/
+	bodies.object_list.clear();
+	zed.disableObjectDetection();
+	zed.disablePositionalTracking();
+	zed.close();
+	file.close();
 
-    // Disable modules
-    zed.disableObjectDetection();
-    zed.disablePositionalTracking();
-    zed.close();
-
-    return EXIT_SUCCESS;
-}
-
-void parseArgs(int argc, char **argv, InitParameters& param) {
-    if (argc > 1 && string(argv[1]).find(".svo") != string::npos) {
-        // SVO input mode
-        param.input.setFromSVOFile(argv[1]);
-		is_playback = true;
-        cout << "[Sample] Using SVO File input: " << argv[1] << endl;
-    } else if (argc > 1 && string(argv[1]).find(".svo") == string::npos) {
-        string arg = string(argv[1]);
-        unsigned int a, b, c, d, port;
-        if (sscanf(arg.c_str(), "%u.%u.%u.%u:%d", &a, &b, &c, &d, &port) == 5) {
-            // Stream input mode - IP + port
-            string ip_adress = to_string(a) + "." + to_string(b) + "." + to_string(c) + "." + to_string(d);
-            param.input.setFromStream(String(ip_adress.c_str()), port);
-            cout << "[Sample] Using Stream input, IP : " << ip_adress << ", port : " << port << endl;
-        } else if (sscanf(arg.c_str(), "%u.%u.%u.%u", &a, &b, &c, &d) == 4) {
-            // Stream input mode - IP only
-            param.input.setFromStream(String(argv[1]));
-            cout << "[Sample] Using Stream input, IP : " << argv[1] << endl;
-        } else if (arg.find("HD2K") != string::npos) {
-            param.camera_resolution = RESOLUTION::HD2K;
-            cout << "[Sample] Using Camera in resolution HD2K" << endl;
-        } else if (arg.find("HD1080") != string::npos) {
-            param.camera_resolution = RESOLUTION::HD1080;
-            cout << "[Sample] Using Camera in resolution HD1080" << endl;
-        } else if (arg.find("HD720") != string::npos) {
-            param.camera_resolution = RESOLUTION::HD720;
-            cout << "[Sample] Using Camera in resolution HD720" << endl;
-        } else if (arg.find("VGA") != string::npos) {
-            param.camera_resolution = RESOLUTION::VGA;
-            cout << "[Sample] Using Camera in resolution VGA" << endl;
-        }
-    }
+	return EXIT_SUCCESS;
 }
 
 void print(string msg_prefix, ERROR_CODE err_code, string msg_suffix) {
-    cout << "[Sample]";
-    if (err_code != ERROR_CODE::SUCCESS)
-        cout << "[Error]";
-    cout << " " << msg_prefix << " ";
-    if (err_code != ERROR_CODE::SUCCESS) {
-        cout << " | " << toString(err_code) << " : ";
-        cout << toVerbose(err_code);
-    }
-    if (!msg_suffix.empty())
-        cout << " " << msg_suffix;
-    cout << endl;
+	if (err_code != ERROR_CODE::SUCCESS)
+		cout << "[Error]";
+	cout << " " << msg_prefix << " ";
+	if (err_code != ERROR_CODE::SUCCESS) {
+		cout << " | " << toString(err_code) << " : ";
+		cout << toVerbose(err_code);
+	}
+	if (!msg_suffix.empty())
+		cout << " " << msg_suffix;
+	cout << endl;
 }

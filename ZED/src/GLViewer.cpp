@@ -1,7 +1,5 @@
 #include "GLViewer.hpp"
 #include <random>
-using namespace std;
-//#include <sl/Camera.hpp>
 
 #if defined(_DEBUG) && defined(_WIN32)
 #error "This sample should not be built in Debug mode, use RelWithDebInfo if you want to do step by step."
