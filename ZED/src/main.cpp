@@ -75,7 +75,7 @@ int main(int argc, char** argv)
 		return EXIT_FAILURE;
 	}
 
-	/* OJO A ESTO, PARECE LO DEL FONDO
+	 //OJO A ESTO, PARECE LO DEL FONDO
 
 	PositionalTrackingParameters positional_tracking_parameters;
 
@@ -86,7 +86,7 @@ int main(int argc, char** argv)
 		return EXIT_FAILURE;
 	}
 
-	*/
+	
 
 	//Modulo deteccion objetos
 	ObjectDetectionRuntimeParameters objectTracker_parameters_rt;
@@ -115,9 +115,9 @@ int main(int argc, char** argv)
 	auto camera_parameters = zed.getCameraInformation(pc_resolution).camera_configuration.calibration_parameters.left_cam;
 	Mat point_cloud(pc_resolution, MAT_TYPE::F32_C4, MEM::GPU);
 	//Visor OpenGL
-	GLViewer viewer;
-	viewer.init(argc, argv, camera_parameters, obj_det_params.enable_tracking, obj_det_params.body_format);
-	bool gl_viewer_available = true;
+	//GLViewer viewer;
+	//viewer.init(argc, argv, camera_parameters, obj_det_params.enable_tracking, obj_det_params.body_format);
+	//bool gl_viewer_available = true;
 	Pose cam_pose;
 	cam_pose.pose_data.setIdentity();
 
@@ -138,7 +138,7 @@ int main(int argc, char** argv)
 	t_init = high_resolution_clock::now();
 
 	//Bucle principal
-	while (gl_viewer_available && !quit)
+	while (!quit)//(gl_viewer_available && !quit)
 	{
 		//Obtencion imagenes
 		if (zed.grab() == ERROR_CODE::SUCCESS) {
@@ -162,8 +162,8 @@ int main(int argc, char** argv)
 			zed.retrieveMeasure(point_cloud, MEASURE::XYZRGBA, MEM::GPU, pc_resolution);
 			zed.getPosition(cam_pose, REFERENCE_FRAME::WORLD);
 			//Actualizar vista GL
-			viewer.updateData(point_cloud, bodies.object_list, cam_pose.pose_data);
-			gl_viewer_available = viewer.isAvailable();
+			//viewer.updateData(point_cloud, bodies.object_list, cam_pose.pose_data);
+			//gl_viewer_available = viewer.isAvailable();
 
 			//Terminar al finalizar video input
 			if (INPUT && zed.getSVOPosition() == zed.getSVONumberOfFrames()) quit = true;
@@ -224,7 +224,7 @@ int main(int argc, char** argv)
 	}
 
 	//Liberar objetos y modulos
-	viewer.exit();
+	//viewer.exit();
 	image_left.free();
 	point_cloud.free();
 	/*floor_plane.clear();*/
