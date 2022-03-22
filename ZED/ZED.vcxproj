@@ -133,7 +133,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\ZED SDK\dependencies\opencv_3.1.0\include;C:\Program Files (x86)\ZED SDK\include;C:\Program Files (x86)\ZED SDK\dependencies\glew-1.12.0\include;C:\Program Files (x86)\ZED SDK\dependencies\freeglut_2.8\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include;C:\Users\mateo\Documents\Visual Studio 2022\Projects\ZED\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\ZED SDK\dependencies\opencv_3.1.0\include;C:\Program Files (x86)\ZED SDK\include;C:\Program Files (x86)\ZED SDK\dependencies\glew-1.12.0\include;C:\Program Files (x86)\ZED SDK\dependencies\freeglut_2.8\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include;include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++14</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
