@@ -140,10 +140,10 @@ void render_3D(cv::Mat &left_display, sl::float3 img_scale, std::vector<sl::Obje
 						//cout << "\tArticulacion kp_a(" << k << "): x = " << kp_a.x << "; y = " << kp_a.y << "\n";
 						//cout << "\tArticulacion kp_b(" << k << "): x = " << kp_b.x << "; y = " << kp_b.y << "\n";
 						if ((k == 1) || (k == 8) || (k == 10)) {
-							myFile << kp_a.x << ";" << kp_a.y << ";" << kp_a.z << ";" << kp_b.x << ";" << kp_b.y << ";" << kp_b.z << ";";
+							myFile << kp_a.x << "," << kp_a.y << "," << kp_a.z << ";" << kp_b.x << "," << kp_b.y << "," << kp_b.z << ";";
 						}
 						else {
-							myFile << kp_b.x << ";" << kp_b.y << ";" << kp_b.z << ";";
+							myFile << kp_b.x << "," << kp_b.y << "," << kp_b.z << ";";
 						}
 					}
 
@@ -159,7 +159,7 @@ void render_3D(cv::Mat &left_display, sl::float3 img_scale, std::vector<sl::Obje
 						//cout << "\tArticulacion kp_a(" << k << "): x = " << kp_a.x << "; y = " << kp_a.y << "\n";
 						//cout << "\tArticulacion kp_b(" << k << "): x = " << kp_b.x << "; y = " << kp_b.y << "\n";
 						myFile << "Centro cadera" << ";";
-						myFile << kp_a.x << ";" << kp_a.y << ";" << kp_a.z;
+						myFile << kp_a.x << "," << kp_a.y << "," << kp_a.z;
 					}
 					else {
 						myFile << "Centro cadera" << ";" << "- , -";
@@ -196,7 +196,7 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 		std::chrono::duration<double> elapsed_seconds = end - start;
 		//static std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-		myFile << elapsed_seconds.count() << ";";
+		myFile << elapsed_seconds.count() << ",";
 		if (renderObject(obj_3D, isTrackingON)) {
 			if (obj_3D.keypoint.size()) {
 				cv::Scalar color = generateColorID_u(obj_3D.id);
@@ -207,7 +207,7 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 				strftime(fecha, 1000, "%A, %B %d %Y %H:%M:%S", p);
 				//j++;
 				//time_fps = j / 100.0; //Ponlo bonito
-				//myFile << to_string(time_fps) << ";";
+				//myFile << to_string(time_fps) << ",";
 				
 				if (body_format == sl::BODY_FORMAT::POSE_18) {
 					// skeleton bones
@@ -232,10 +232,10 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 						//cout << "\tArticulacion kp_a(" << k << "): x = " << kp_a.x << "; y = " << kp_a.y << "\n";
 						//cout << "\tArticulacion kp_b(" << k << "): x = " << kp_b.x << "; y = " << kp_b.y << "\n";
 						if ((k == 1) || (k == 8) || (k == 10)) {
-							myFile << kp_a_3D.x << ";" << kp_a_3D.y << ";" << kp_a_3D.z << ";" << kp_b_3D.x << ";" << kp_b_3D.y << ";" << kp_b_3D.z << ";";
+							myFile << kp_a_3D.x << "," << kp_a_3D.y << "," << kp_a_3D.z << "," << kp_b_3D.x << "," << kp_b_3D.y << "," << kp_b_3D.z << ",";
 						}
 						else {
-							myFile << kp_b_3D.x << ";" << kp_b_3D.y << ";" << kp_b_3D.z << ";";
+							myFile << kp_b_3D.x << "," << kp_b_3D.y << "," << kp_b_3D.z << ",";
 						}
 					}
 
@@ -252,7 +252,7 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 
 						auto kp_a_3D = cvt_3D(spine, img_scale_3D);
 						auto kp_b_3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS::NECK)], img_scale_3D);
-						myFile << kp_a_3D.x << ";" << kp_a_3D.y << ";" << kp_a_3D.z << ";";
+						myFile << kp_a_3D.x << "," << kp_a_3D.y << "," << kp_a_3D.z << ",";
 
 						if (roi_render.contains(kp_a) && roi_render.contains(kp_b))
 						{
@@ -264,12 +264,12 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 						}
 					}
 					else {
-						myFile << "-,-,-" << ";";
+						myFile << "-,-,-" << ",";
 					}
 
 					if (hip_left.x > 0 && hip_left.y > 0 && hip_right.x > 0 && hip_right.y > 0 && neck.x > 0 && neck.y > 0) {
 						k++;
-						myFile << mid_shoulder.x << ";" << mid_shoulder.y << ";" << mid_shoulder.z;
+						myFile << mid_shoulder.x << "," << mid_shoulder.y << "," << mid_shoulder.z;
 					}
 					else {
 						myFile << "-,-,-";
@@ -307,50 +307,50 @@ void render_complete(cv::Mat &left_display, sl::float2 img_scale, sl::float3 img
 #endif
 						}
 						/*if ((k == 1)) {
-							myFile << kp_a_3D.x << ";" << kp_a_3D.y << ";" << kp_a_3D.z << ";" << kp_b_3D.x << ";" << kp_b_3D.y << ";" << kp_b_3D.z << ";";
+							myFile << kp_a_3D.x << "," << kp_a_3D.y << "," << kp_a_3D.z << "," << kp_b_3D.x << "," << kp_b_3D.y << "," << kp_b_3D.z << ",";
 						}
 						else {
-							myFile << kp_b_3D.x << ";" << kp_b_3D.y << ";" << kp_b_3D.z << ";";
+							myFile << kp_b_3D.x << "," << kp_b_3D.y << "," << kp_b_3D.z << ",";
 						}
 					}
 					auto kp_3D_1 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::HEAD)], img_scale_3D);
-					myFile << kp_3D_1.x << ";" << kp_3D_1.y << ";" << kp_3D_1.z << ";";
+					myFile << kp_3D_1.x << "," << kp_3D_1.y << "," << kp_3D_1.z << ",";
 					auto kp_3D_2 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::NECK)], img_scale_3D);
-					myFile << kp_3D_2.x << ";" << kp_3D_2.y << ";" << kp_3D_2.z << ";";
+					myFile << kp_3D_2.x << "," << kp_3D_2.y << "," << kp_3D_2.z << ",";
 					auto kp_3D_3 = (cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_CLAVICLE)], img_scale_3D) + cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_CLAVICLE)], img_scale_3D)) / 2;
-					myFile << kp_3D_3.x << ";" << kp_3D_3.y << ";" << kp_3D_3.z << ";";
+					myFile << kp_3D_3.x << "," << kp_3D_3.y << "," << kp_3D_3.z << ",";
 					auto kp_3D_4 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::CHEST_SPINE)], img_scale_3D);
-					myFile << kp_3D_4.x << ";" << kp_3D_4.y << ";" << kp_3D_4.z << ";";
+					myFile << kp_3D_4.x << "," << kp_3D_4.y << "," << kp_3D_4.z << ",";
 					auto kp_3D_5 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::PELVIS)], img_scale_3D);
-					myFile << kp_3D_5.x << ";" << kp_3D_5.y << ";" << kp_3D_5.z << ";";
+					myFile << kp_3D_5.x << "," << kp_3D_5.y << "," << kp_3D_5.z << ",";
 					auto kp_3D_6 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_SHOULDER)], img_scale_3D);
-					myFile << kp_3D_6.x << ";" << kp_3D_6.y << ";" << kp_3D_6.z << ";";
+					myFile << kp_3D_6.x << "," << kp_3D_6.y << "," << kp_3D_6.z << ",";
 					auto kp_3D_7 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ELBOW)], img_scale_3D);
-					myFile << kp_3D_7.x << ";" << kp_3D_7.y << ";" << kp_3D_7.z << ";";
+					myFile << kp_3D_7.x << "," << kp_3D_7.y << "," << kp_3D_7.z << ",";
 					auto kp_3D_8 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_WRIST)], img_scale_3D);
-					myFile << kp_3D_8.x << ";" << kp_3D_8.y << ";" << kp_3D_8.z << ";";
+					myFile << kp_3D_8.x << "," << kp_3D_8.y << "," << kp_3D_8.z << ",";
 					auto kp_3D_9 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_SHOULDER)], img_scale_3D);
-					myFile << kp_3D_9.x << ";" << kp_3D_9.y << ";" << kp_3D_9.z << ";";
+					myFile << kp_3D_9.x << "," << kp_3D_9.y << "," << kp_3D_9.z << ",";
 					auto kp_3D_10 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ELBOW)], img_scale_3D);
-					myFile << kp_3D_10.x << ";" << kp_3D_10.y << ";" << kp_3D_10.z << ";";
+					myFile << kp_3D_10.x << "," << kp_3D_10.y << "," << kp_3D_10.z << ",";
 					auto kp_3D_11 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_WRIST)], img_scale_3D);
-					myFile << kp_3D_11.x << ";" << kp_3D_11.y << ";" << kp_3D_11.z << ";";
+					myFile << kp_3D_11.x << "," << kp_3D_11.y << "," << kp_3D_11.z << ",";
 					auto kp_3D_12 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_HIP)], img_scale_3D);
-					myFile << kp_3D_12.x << ";" << kp_3D_12.y << ";" << kp_3D_12.z << ";";
+					myFile << kp_3D_12.x << "," << kp_3D_12.y << "," << kp_3D_12.z << ",";
 					auto kp_3D_13 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_KNEE)], img_scale_3D);
-					myFile << kp_3D_13.x << ";" << kp_3D_13.y << ";" << kp_3D_13.z << ";";
+					myFile << kp_3D_13.x << "," << kp_3D_13.y << "," << kp_3D_13.z << ",";
 					auto kp_3D_14 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ANKLE)], img_scale_3D);
-					myFile << kp_3D_14.x << ";" << kp_3D_14.y << ";" << kp_3D_14.z << ";";
+					myFile << kp_3D_14.x << "," << kp_3D_14.y << "," << kp_3D_14.z << ",";
 					auto kp_3D_15 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_FOOT)], img_scale_3D);
-					myFile << kp_3D_15.x << ";" << kp_3D_15.y << ";" << kp_3D_15.z << ";";
+					myFile << kp_3D_15.x << "," << kp_3D_15.y << "," << kp_3D_15.z << ",";
 					auto kp_3D_16 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_HIP)], img_scale_3D);
-					myFile << kp_3D_16.x << ";" << kp_3D_16.y << ";" << kp_3D_16.z << ";";
+					myFile << kp_3D_16.x << "," << kp_3D_16.y << "," << kp_3D_16.z << ",";
 					auto kp_3D_17 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_KNEE)], img_scale_3D);
-					myFile << kp_3D_17.x << ";" << kp_3D_17.y << ";" << kp_3D_17.z << ";";
+					myFile << kp_3D_17.x << "," << kp_3D_17.y << "," << kp_3D_17.z << ",";
 					auto kp_3D_18 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ANKLE)], img_scale_3D);
-					myFile << kp_3D_18.x << ";" << kp_3D_18.y << ";" << kp_3D_18.z << ";";
+					myFile << kp_3D_18.x << "," << kp_3D_18.y << "," << kp_3D_18.z << ",";
 					auto kp_3D_19 = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_FOOT)], img_scale_3D);
-					myFile << kp_3D_19.x << ";" << kp_3D_19.y << ";" << kp_3D_19.z;
+					myFile << kp_3D_19.x << "," << kp_3D_19.y << "," << kp_3D_19.z;
 					// skeleton joints
 					for (auto& kp : obj.keypoint_2d) {
 						cv::Point2f cv_kp = cvt(kp, img_scale);
