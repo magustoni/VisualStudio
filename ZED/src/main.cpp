@@ -73,6 +73,7 @@ int main(int argc, char** argv)
 	init_parameters.depth_mode = DEPTH_MODE::PERFORMANCE; //Modo profundidad -------------------------------------PROBAR
 	init_parameters.coordinate_system = COORDINATE_SYSTEM::IMAGE; //Sistema coordenadas --------------------------PROBAR
 	if (INPUT) init_parameters.input.setFromSVOFile("input.svo"); //Entrada desde fichero ------------------------PROBAR
+	init_parameters.sensors_required = 1;
 
 	//Inicializacion ZED
 	returned_state = zed.open(init_parameters);
@@ -139,7 +140,7 @@ int main(int argc, char** argv)
 	{
 		//Obtencion imagenes
 		if (zed.grab() == ERROR_CODE::SUCCESS) {
-			cout << "Working on frame" << frame++ << endl;
+			cout << "Working on frame " << frame++ << endl;
 
 			/* Camara fija
 			if (need_floor_plane) {
