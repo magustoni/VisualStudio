@@ -5,7 +5,7 @@
 #include <fstream>
 #include <chrono>
 
-#define FRAMES 200 //Numero de frames a capturar
+#define FRAMES 10000 //Numero de frames a capturar
 #define MODE 1 //Modo de funcionamiento
 //0 -> Modo analisis manual en .txt
 //1- > Modo captura datos en .csv
@@ -23,7 +23,7 @@ SkeletonTracker::Ptr skeletonTracker; //Modulo "tracker"
 steady_clock::time_point t_init, t_now;
 
 //Conjunto de articulaciones de interes
-const vector<JointType> desired_joints = { JOINT_HEAD, JOINT_NECK, JOINT_TORSO, JOINT_WAIST, JOINT_LEFT_SHOULDER, 
+const vector<JointType> desired_joints = { JOINT_HEAD, JOINT_NECK, JOINT_LEFT_COLLAR, JOINT_TORSO, JOINT_WAIST, JOINT_LEFT_SHOULDER, 
 JOINT_LEFT_ELBOW, JOINT_LEFT_WRIST, JOINT_RIGHT_SHOULDER, JOINT_RIGHT_ELBOW,  JOINT_RIGHT_WRIST, 
 JOINT_RIGHT_HIP, JOINT_RIGHT_KNEE, JOINT_RIGHT_ANKLE, JOINT_LEFT_HIP, JOINT_LEFT_KNEE, JOINT_LEFT_ANKLE };
 
@@ -47,11 +47,11 @@ int main(int argc, char* argv[])
 	if (MODE == 0) fichero << "Modo analisis manual" << endl << endl;
 	if (MODE == 1)
 	{
-		fichero << "frame;;tiempo;";
+		fichero << "tiempo;";
 		for (auto k : desired_joints) {
-			fichero << name(k) << ".x;";
-			fichero << name(k) << ".y;";
-			fichero << name(k) << ".z;";
+			fichero << "joint_position_" << name(k) << ".x;";
+			fichero << "joint_position_" << name(k) << ".y;";
+			fichero << "joint_position_" << name(k) << ".z;";
 		}
 		fichero << endl;
 	}
@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
 	{
 		cout << "Procesando frame " << frame + 1 << endl;
 		if (MODE == 0) fichero << "Frame " << frame + 1 << endl;
-		if (MODE == 1) fichero << frame + 1 << "\t\t";
+		//if (MODE == 1) fichero << frame + 1 << "\t\t";
 		//Esperar datos
 		try { Nuitrack::waitUpdate(skeletonTracker); }
 		catch (LicenseNotAcquiredException& e)
@@ -130,7 +130,7 @@ const char* name(JointType joint)
 		switch (joint) {
 		case JOINT_HEAD: return "head";
 		case JOINT_LEFT_ANKLE: return "left_ankle";
-		case JOINT_LEFT_COLLAR: return "Clavicula Izq";
+		case JOINT_LEFT_COLLAR: return "spine_top";
 		case JOINT_LEFT_ELBOW: return "left_elbow";
 		case JOINT_LEFT_FINGERTIP: return "Dedo Izq";
 		case JOINT_LEFT_FOOT: return "Pie Izq";
@@ -202,7 +202,7 @@ void onSkeletonUpdate(SkeletonData::Ptr skeletonData)
 	}
 	if (MODE == 1) {
 		t_now = high_resolution_clock::now();
-		fichero << float(duration_cast<milliseconds>(t_now - t_init).count()) / 1000 << "\t";
+		fichero << float(duration_cast<milliseconds>(t_now - t_init).count()) / 1000 << ";";
 
 		for (auto i : desired_joints)
 				fichero << joints[i].real.x << ";" << joints[i].real.y << ";" << joints[i].real.z << ";";
