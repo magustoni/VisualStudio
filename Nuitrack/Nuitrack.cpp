@@ -8,7 +8,7 @@
 #define FRAMES 200 //Numero de frames a capturar
 #define MODE 1 //Modo de funcionamiento
 //0 -> Modo analisis manual en .txt
-//1- > Modo captura datos en .xls
+//1- > Modo captura datos en .csv
 #define PRINT false //Salida (solo modo 0)
 //false -> Solo numero articulaciones captadas
 //true -> Numero y posiciones de cada una
@@ -47,11 +47,11 @@ int main(int argc, char* argv[])
 	if (MODE == 0) fichero << "Modo analisis manual" << endl << endl;
 	if (MODE == 1)
 	{
-		fichero << "Frame\t\tTiempo\t";
+		fichero << "frame;;tiempo;";
 		for (auto k : desired_joints) {
-			fichero << name(k) << " X\t";
-			fichero << name(k) << " Y\t";
-			fichero << name(k) << " Z\t";
+			fichero << name(k) << ".x;";
+			fichero << name(k) << ".y;";
+			fichero << name(k) << ".z;";
 		}
 		fichero << endl;
 	}
@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
 	cout << "Fin del programa Nuitrack" << endl;
 	fichero.close();
 	if (MODE == 0) system("Nuitrack.txt");
-	if (MODE == 1) system("Nuitrack.xls");
+	if (MODE == 1) system("Nuitrack.csv");
 
 	return 0;
 }
@@ -128,30 +128,30 @@ const char* name(JointType joint)
 	}
 	if (MODE == 1) {
 		switch (joint) {
-		case JOINT_HEAD: return "Cabeza";
-		case JOINT_LEFT_ANKLE: return "Tobillo Izq";
+		case JOINT_HEAD: return "head";
+		case JOINT_LEFT_ANKLE: return "left_ankle";
 		case JOINT_LEFT_COLLAR: return "Clavicula Izq";
-		case JOINT_LEFT_ELBOW: return "Codo Izq";
+		case JOINT_LEFT_ELBOW: return "left_elbow";
 		case JOINT_LEFT_FINGERTIP: return "Dedo Izq";
 		case JOINT_LEFT_FOOT: return "Pie Izq";
-		case JOINT_LEFT_HAND: return "Mano Izq";
-		case JOINT_LEFT_HIP: return "Cadera Izq";
-		case JOINT_LEFT_KNEE: return "Rodilla Izq";
-		case JOINT_LEFT_SHOULDER: return "Hombro Izq";
-		case JOINT_LEFT_WRIST: return "Muñeca Izq";
-		case JOINT_NECK: return "Cuello";
-		case JOINT_TORSO: return "Esternon";
-		case JOINT_WAIST: return "Cintura";
-		case JOINT_RIGHT_ANKLE: return "Tobillo Der";
+		case JOINT_LEFT_HAND: return "Mano izq";
+		case JOINT_LEFT_HIP: return "left_hip";
+		case JOINT_LEFT_KNEE: return "left_knee";
+		case JOINT_LEFT_SHOULDER: return "left_shoulder";
+		case JOINT_LEFT_WRIST: return "left_wrist";
+		case JOINT_NECK: return "neck";
+		case JOINT_TORSO: return "spine_mid";
+		case JOINT_WAIST: return "spine_bottom";
+		case JOINT_RIGHT_ANKLE: return "right_ankle";
 		case JOINT_RIGHT_COLLAR: return "Clavicula Der";
-		case JOINT_RIGHT_ELBOW: return "Codo Der";
+		case JOINT_RIGHT_ELBOW: return "right_elbow";
 		case JOINT_RIGHT_FINGERTIP: return "Dedo Der";
 		case JOINT_RIGHT_FOOT: return "Pie Der";
 		case JOINT_RIGHT_HAND: return "Mano Der";
-		case JOINT_RIGHT_HIP: return "Cadera Der";
-		case JOINT_RIGHT_KNEE: return "Rodilla Der";
-		case JOINT_RIGHT_SHOULDER: return "Hombro Der";
-		case JOINT_RIGHT_WRIST: return "Muñeca Der";
+		case JOINT_RIGHT_HIP: return "right_hip";
+		case JOINT_RIGHT_KNEE: return "right_knee";
+		case JOINT_RIGHT_SHOULDER: return "right_shoulder";
+		case JOINT_RIGHT_WRIST: return "right_wrist";
 		default: return "NONE";
 		}
 	}
@@ -205,7 +205,7 @@ void onSkeletonUpdate(SkeletonData::Ptr skeletonData)
 		fichero << float(duration_cast<milliseconds>(t_now - t_init).count()) / 1000 << "\t";
 
 		for (auto i : desired_joints)
-				fichero << joints[i].real.x << "\t" << joints[i].real.y << "\t" << joints[i].real.z << "\t";
+				fichero << joints[i].real.x << ";" << joints[i].real.y << ";" << joints[i].real.z << ";";
 	}
 }
 bool belongs(int index, const vector<JointType> v) {
@@ -217,7 +217,7 @@ void init()
 {
 	//Apertura del fichero de salida
 	if (MODE == 0)	fichero.open("Nuitrack.txt", fstream::out);
-	if (MODE == 1)	fichero.open("Nuitrack.xls", fstream::out);
+	if (MODE == 1)	fichero.open("Nuitrack.csv", fstream::out);
 
 	//Configuracion Nuitrack
 	Nuitrack::init();
