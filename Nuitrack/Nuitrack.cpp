@@ -63,7 +63,8 @@ int main(int argc, char* argv[])
 	{
 		cout << "Procesando frame " << frame + 1 << endl;
 		if (MODE == 0) fichero << "Frame " << frame + 1 << endl;
-		//if (MODE == 1) fichero << frame + 1 << "\t\t";
+		//if (MODE == 1) fichero << frame + 1 << ";;";
+		
 		//Esperar datos
 		try { Nuitrack::waitUpdate(skeletonTracker); }
 		catch (LicenseNotAcquiredException& e)
@@ -160,7 +161,7 @@ void onSkeletonUpdate(SkeletonData::Ptr skeletonData)
 {
 	//No se recibio correctamente el puntero
 	if (!skeletonData) {
-		cout << "\t\t--------No se detectaron sujetos-------\n" << endl;
+		cout << "--------No se detectaron sujetos-------" << endl;
 		return;
 	}
 

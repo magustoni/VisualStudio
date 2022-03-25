@@ -31,7 +31,6 @@ const bool isJetson = false;
 #include <fstream>
 #include <chrono>
 
-#define JOINTS 0 // 0 -> 34 articulaciones | 1 -> 18 articulaciones
 #define INPUT 0 // 0 -> video | 1 -> .svo
 #define CONFIDENCE 40 //Minima confianza admitida (0-100)
 
@@ -46,7 +45,6 @@ inline cv::Point3f cvt_3D(T pt, sl::float3 scale) {
 
 bool quit = false; //Termina el bucle cuando pasa a true
 void print(string msg_prefix, ERROR_CODE err_code = ERROR_CODE::SUCCESS, string msg_suffix = ""); //Imprime mensaje en caso de error
-
 
 
 int main(int argc, char** argv)
@@ -70,10 +68,11 @@ int main(int argc, char** argv)
 	//Parametros ZED
 	init_parameters.camera_resolution = RESOLUTION::VGA; //Resolucion
 	init_parameters.camera_fps = 100; //FPS
-	init_parameters.depth_mode = DEPTH_MODE::PERFORMANCE; //Modo profundidad -------------------------------------PROBAR
-	init_parameters.coordinate_system = COORDINATE_SYSTEM::IMAGE; //Sistema coordenadas --------------------------PROBAR
-	if (INPUT) init_parameters.input.setFromSVOFile("input.svo"); //Entrada desde fichero ------------------------PROBAR
-	init_parameters.sensors_required = 1;
+	init_parameters.depth_mode = DEPTH_MODE::PERFORMANCE; //Modo profundidad
+	init_parameters.coordinate_system = COORDINATE_SYSTEM::IMAGE; //Sistema coordenadas
+
+	if (INPUT) init_parameters.input.setFromSVOFile("input.svo"); //Entrada desde fichero
+	init_parameters.sensors_required = TRUE;
 
 	//Inicializacion ZED
 	returned_state = zed.open(init_parameters);
@@ -93,8 +92,8 @@ int main(int argc, char** argv)
 	objectTracker_parameters_rt.detection_confidence_threshold = CONFIDENCE; //Minima confianza admitida (0-100) 
 	obj_det_params.enable_tracking = true; //Habilitar tracking
 	obj_det_params.enable_body_fitting = false; //Suavizar movimientos esqueleto
-	obj_det_params.body_format = JOINTS ? BODY_FORMAT::POSE_18 : BODY_FORMAT::POSE_34; //Num articulaciones
-	obj_det_params.detection_model = DETECTION_MODEL::HUMAN_BODY_FAST; //DETECTION_MODEL::HUMAN_BODY_MEDIUM //Precision -----------------------PROBAR
+	obj_det_params.body_format = BODY_FORMAT::POSE_34; //Num articulaciones
+	obj_det_params.detection_model = DETECTION_MODEL::HUMAN_BODY_ACCURATE; //Modelo de deteccion
 	returned_state = zed.enableObjectDetection(obj_det_params);
 	if (returned_state != ERROR_CODE::SUCCESS) {
 		print("enable Object Detection", returned_state, "\nExit program.");
@@ -115,11 +114,10 @@ int main(int argc, char** argv)
 	Pose cam_pose;
 	cam_pose.pose_data.setIdentity();
 
-	/* Visor OpenGL
+	// Visor OpenGL
 	GLViewer viewer;
 	viewer.init(argc, argv, camera_parameters, obj_det_params.enable_tracking, obj_det_params.body_format);
 	bool gl_viewer_available = true;
-	*/
 
 	/* Camara fija
 	Plane floor_plane; // floor plane handle
@@ -157,11 +155,10 @@ int main(int argc, char** argv)
 			zed.retrieveMeasure(point_cloud, MEASURE::XYZRGBA, MEM::GPU, pc_resolution);
 			zed.getPosition(cam_pose, REFERENCE_FRAME::WORLD);
 
-			/* Visor OpenGL
+			// Visor OpenGL
 			viewer.updateData(point_cloud, bodies.object_list, cam_pose.pose_data);
 			gl_viewer_available = viewer.isAvailable();
-			*/
-
+			
 			//Terminar al finalizar video input
 			if (INPUT && zed.getSVOPosition() == zed.getSVONumberOfFrames()) quit = true;
 
@@ -221,7 +218,7 @@ int main(int argc, char** argv)
 	}
 
 	//Liberar objetos y modulos
-	//viewer.exit();
+	viewer.exit();
 	image_left.free();
 	point_cloud.free();
 	//floor_plane.clear();
