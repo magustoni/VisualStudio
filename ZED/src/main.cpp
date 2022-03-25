@@ -27,6 +27,7 @@ const bool isJetson = false;
 #include <sl/Camera.hpp>
 //#include "GLViewer.hpp"
 #include "TrackingViewer.hpp"
+#include <math.h>
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -127,18 +128,24 @@ int main(int argc, char** argv)
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	//Variables de calculo
+	cv::Point3f articulacion;
+	cv::Point3f cadera, rodilla, tobillo;
+	cv::Point3f femur, tibia;
+	float angulo;
 
 	//Cabecera fichero
-	file << "tiempo;joint_position_head.x;joint_position_head.y;joint_position_head.z;joint_position_neck.x;joint_position_neck.y;joint_position_neck.z;joint_position_spine_top.x;joint_position_spine_top.y;joint_position_spine_top.z;joint_position_spine_mid.x;joint_position_spine_mid.y;joint_position_spine_mid.z;joint_position_spine_bottom.x;joint_position_spine_bottom.y;joint_position_spine_bottom.z;joint_position_left_shoulder.x;joint_position_left_shoulder.y;joint_position_left_shoulder.z;joint_position_left_elbow.x;joint_position_left_elbow.y;joint_position_left_elbow.z;joint_position_left_hand.x;joint_position_left_hand.y;joint_position_left_hand.z;joint_position_right_shoulder.x;joint_position_right_shoulder.y;joint_position_right_shoulder.z;joint_position_right_elbow.x;joint_position_right_elbow.y;joint_position_right_elbow.z;joint_position_right_hand.x;joint_position_right_hand.y;joint_position_right_hand.z;joint_position_right_hip.x;joint_position_right_hip.y;joint_position_right_hip.z;joint_position_right_knee.x;joint_position_right_knee.y;joint_position_right_knee.z;joint_position_right_ankle.x;joint_position_right_ankle.y;joint_position_right_ankle.z;joint_position_left_hip.x;joint_position_left_hip.y;joint_position_left_hip.z;joint_position_left_knee.x;joint_position_left_knee.y;joint_position_left_knee.z;joint_position_left_ankle.x;joint_position_left_ankle.y;joint_position_left_ankle.z" << endl;
+	file << "tiempo;head.x;head.y;head.z;neck.x;neck.y;neck.z;spine_top.x;spine_top.y;spine_top.z;spine_mid.x;spine_mid.y;spine_mid.z;spine_bottom.x;spine_bottom.y;spine_bottom.z;left_shoulder.x;left_shoulder.y;left_shoulder.z;left_elbow.x;left_elbow.y;left_elbow.z;left_hand.x;left_hand.y;left_hand.z;right_shoulder.x;right_shoulder.y;right_shoulder.z;right_elbow.x;right_elbow.y;right_elbow.z;right_hand.x;right_hand.y;right_hand.z;right_hip.x;right_hip.y;right_hip.z;right_knee.x;right_knee.y;right_knee.z;right_ankle.x;right_ankle.y;right_ankle.z;left_hip.x;left_hip.y;left_hip.z;left_knee.x;left_knee.y;left_knee.z;left_ankle.x;left_ankle.y;left_ankle.z;left_angle;right_angle" << endl;
+	//file << "tiempo;joint_position_head.x;joint_position_head.y;joint_position_head.z;joint_position_neck.x;joint_position_neck.y;joint_position_neck.z;joint_position_spine_top.x;joint_position_spine_top.y;joint_position_spine_top.z;joint_position_spine_mid.x;joint_position_spine_mid.y;joint_position_spine_mid.z;joint_position_spine_bottom.x;joint_position_spine_bottom.y;joint_position_spine_bottom.z;joint_position_left_shoulder.x;joint_position_left_shoulder.y;joint_position_left_shoulder.z;joint_position_left_elbow.x;joint_position_left_elbow.y;joint_position_left_elbow.z;joint_position_left_hand.x;joint_position_left_hand.y;joint_position_left_hand.z;joint_position_right_shoulder.x;joint_position_right_shoulder.y;joint_position_right_shoulder.z;joint_position_right_elbow.x;joint_position_right_elbow.y;joint_position_right_elbow.z;joint_position_right_hand.x;joint_position_right_hand.y;joint_position_right_hand.z;joint_position_right_hip.x;joint_position_right_hip.y;joint_position_right_hip.z;joint_position_right_knee.x;joint_position_right_knee.y;joint_position_right_knee.z;joint_position_right_ankle.x;joint_position_right_ankle.y;joint_position_right_ankle.z;joint_position_left_hip.x;joint_position_left_hip.y;joint_position_left_hip.z;joint_position_left_knee.x;joint_position_left_knee.y;joint_position_left_knee.z;joint_position_left_ankle.x;joint_position_left_ankle.y;joint_position_left_ankle.z" << endl;
 	t_init = high_resolution_clock::now();
 
 	//Bucle principal
-	int frame = 1;
+	int frame = 0;
 	while (!quit)//(gl_viewer_available && !quit)
 	{
 		//Obtencion imagenes
 		if (zed.grab() == ERROR_CODE::SUCCESS) {
-			cout << "Working on frame " << frame++ << endl;
+			cout << "Working on frame " << ++frame << endl;
 
 			/* Camara fija
 			if (need_floor_plane) {
@@ -171,43 +178,79 @@ int main(int argc, char** argv)
 
 			if (!bodies.object_list.empty()) //Si se detectaron esqueletos
 			{
-				cv::Point3f punto3D;
 				sl::ObjectData& obj = *bodies.object_list.rbegin(); //Solo el primer esqueleto detectado
 
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::HEAD)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Cabeza
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::NECK)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Cuello
-				punto3D = (cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_CLAVICLE)], img_scale_3D) + cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_CLAVICLE)], img_scale_3D)) / 2;
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Espina superior
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::CHEST_SPINE)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Esternon
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::PELVIS)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Pelvis
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_SHOULDER)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Hombro izq
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ELBOW)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Codo izq
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_WRIST)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Mano izq
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_SHOULDER)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Hombro der
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ELBOW)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Codo der
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_WRIST)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Mano der
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_HIP)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Cadera der
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_KNEE)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Rodilla der
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ANKLE)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Tobillo der
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_HIP)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Cadera izq
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_KNEE)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z << ";"; //Rodilla izq
-				punto3D = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ANKLE)], img_scale_3D);
-				file << punto3D.x << ";" << punto3D.y << ";" << punto3D.z; //Tobillo izq
+				//Cabeza
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::HEAD)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Cuello
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::NECK)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Columna superior
+				articulacion = (cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_CLAVICLE)], img_scale_3D) + cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_CLAVICLE)], img_scale_3D)) / 2;
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Columna media
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::CHEST_SPINE)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Columna baja
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::PELVIS)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Hombro izq
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_SHOULDER)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Codo izq
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ELBOW)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Muñeca izq
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_WRIST)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Hombro der
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_SHOULDER)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Codo der
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ELBOW)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Muñeca der
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_WRIST)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Cadera der
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_HIP)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Rodilla der
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_KNEE)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Tobillo der
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ANKLE)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Cadera izq
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_HIP)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Rodilla izq
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_KNEE)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";"; 
+				//Tobillo izq
+				articulacion = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ANKLE)], img_scale_3D);
+				file << articulacion.x << ";" << articulacion.y << ";" << articulacion.z << ";";
+
+				//Angulo rodilla izq
+				cadera = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_HIP)], img_scale_3D);
+				rodilla = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_KNEE)], img_scale_3D);
+				tobillo = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::LEFT_ANKLE)], img_scale_3D);
+				femur = rodilla - cadera;
+				tibia = tobillo - rodilla;
+				
+				angulo = 180 * acos((femur.x * tibia.x + femur.y * tibia.y + femur.z * tibia.z) / (sqrt(pow(femur.x, 2) + pow(femur.y, 2) + pow(femur.z, 2)) * sqrt(pow(tibia.x, 2) + pow(tibia.y, 2) + pow(tibia.z, 2)))) / 3.14159 ;
+				file << angulo << ";";
+
+				//Angulo rodilla der
+				cadera = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_HIP)], img_scale_3D);
+				rodilla = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_KNEE)], img_scale_3D);
+				tobillo = cvt_3D(obj.keypoint[getIdx(sl::BODY_PARTS_POSE_34::RIGHT_ANKLE)], img_scale_3D);
+				femur = rodilla - cadera;
+				tibia = tobillo - rodilla;
+
+				angulo = 180 * acos((femur.x * tibia.x + femur.y * tibia.y + femur.z * tibia.z) / (sqrt(pow(femur.x, 2) + pow(femur.y, 2) + pow(femur.z, 2)) * sqrt(pow(tibia.x, 2) + pow(tibia.y, 2) + pow(tibia.z, 2)))) / 3.14159;
+				file << angulo;
 			}
 
 			file << endl;
